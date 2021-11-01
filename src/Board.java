@@ -20,7 +20,7 @@ public class Board {
 class Field {
 
     public enum fieldType{
-        PROPERTY, GOJAIL, JAIL, CHANCE, FREEPARKING
+        PROPERTY, GOJAIL, JAIL, CHANCE, FREEPARKING, START
     }
 
     fieldType fType;
