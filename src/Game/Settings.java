@@ -1,15 +1,17 @@
+package Game;
+
 public final class Settings {
 
     // Makes instantiating a class of this impossible
     private Settings() {
     }
 
-    // Settings file that contains all settings for the game, making changing things easy and simple
+    // Game.Settings file that contains all settings for the game, making changing things easy and simple
 
     // Text Database(s)
     public static final String FIELD_DATABASE = "fieldDatabase.txt";
 
-    // Board
+    // Game.Board
     public static final int BOARD_SIZE = 20;
 
     // Players
@@ -22,7 +24,7 @@ public final class Settings {
     public static final int PAY_SPOT_MONEY = -2;
     public static final int GO_RESTROOM_MONEY = -3;
 
-    // Die
+    // Game.Die
     public static final int DIE_NUMBER = 2;
     public static final int DIE_FACES = 6;
 
