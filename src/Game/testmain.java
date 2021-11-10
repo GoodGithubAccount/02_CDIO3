@@ -13,11 +13,21 @@ public class testmain {
         //r1.rollar();
         //System.out.println(Arrays.toString(r1.getCup()));
 
-        TXTReader myReader = new TXTReader("fieldDatabase.txt");
+        TXTReader myReader = new TXTReader(Settings.FIELD_DATABASE);
         String test = myReader.readTXTFile();
         System.out.println(test);
 
-        GUIMain myGui = new GUIMain(1600, 900, 24);
+        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.BOARD_SIZE);
+        myBoard.generateBoard();
+
+        Field[] myFields = myBoard.getMyFields();
+
+        for(int i = 0; i < Settings.BOARD_SIZE; i++){
+            System.out.println("NUMBER " + i + ": " + myFields[i].getfType() + myFields[i].getColor() + myFields[i].getPrice() + myFields[i].getName());
+        }
+
+
+        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24);
 
 
     }

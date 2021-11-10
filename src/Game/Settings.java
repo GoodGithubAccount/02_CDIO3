@@ -12,11 +12,11 @@ public final class Settings {
     public static final String FIELD_DATABASE = "fieldDatabase.txt";
 
     // Game.Board
-    public static final int BOARD_SIZE = 20;
+    public static final int BOARD_SIZE = 24;
 
     // Game GUI window size in pixels
-    public static final int windowHeight = 900;
-    public static final int windowWidth = 1600;
+    public static final int WINDOW_HEIGHT = 900;
+    public static final int WINDOW_WIDTH = 1600;
 
     // Players
     public static final int MAX_PLAYERS = 4;

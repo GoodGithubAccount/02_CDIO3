@@ -2,20 +2,36 @@ package Game;
 
 public class Board {
 
-    String fieldDatabase;
     int boardSize;
+
+    String fieldDatabase;
+    Field[] myFields;
 
     Board(String fieldDatabase, int boardSize){
         this.fieldDatabase = fieldDatabase;
         this.boardSize = boardSize;
+        this.myFields = new Field[boardSize];
     }
 
-    private void loadFromTXT(){
-
+    private String loadFromTXT(){
+        TXTReader myReader = new TXTReader(fieldDatabase);
+        return myReader.readTXTFile();
     }
 
-    private void generateBoard(){
+    public void generateBoard(){
+        String Temp = loadFromTXT();
 
+        String[] fields = Temp.split("\n");
+
+        for(int i = 0; i < boardSize; i++){
+            String[] fieldProperties = fields[i].split("-");
+
+            myFields[i] = new Field(Field.fieldType.valueOf(fieldProperties[0]), fieldProperties[1], Integer.parseInt(fieldProperties[2]), fieldProperties[3]);
+        }
+    }
+
+    public Field[] getMyFields() {
+        return myFields;
     }
 }
 
@@ -26,14 +42,14 @@ class Field {
     }
 
     fieldType fType;
-    int[] colorRGB = new int[3];
+    String color;
     int price;
     Player owner;
     String name;
 
-    Field(fieldType fType, int[] colorRGB, int price, String name){
+    Field(fieldType fType, String color, int price, String name){
         this.fType = fType;
-        this.colorRGB = colorRGB;
+        this.color = color;
         this.price = price;
         this.name = name;
         this.owner = null;
@@ -45,8 +61,8 @@ class Field {
     }
 
     // Getters for the variables and owner object reference
-    public int[] getColorRGB() {
-        return colorRGB;
+    public String getColor() {
+        return color;
     }
 
     public int getPrice() {
@@ -60,4 +76,6 @@ class Field {
     public String getName() {
         return name;
     }
+
+    public fieldType getfType() { return fType; }
 }

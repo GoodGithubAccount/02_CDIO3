@@ -1,6 +1,24 @@
-xxx
-dfdfd
-
-dfdf
-d
-dfdf
+START-NONE-2-MODTAG NÅR DU PASSERER
+PROPERTY-BROWN-10-Filler text
+PROPERTY-BROWN-10-Filler text
+CHANCE-NONE-0-Fill text
+PROPERTY-BLUE-10-Filler text
+PROPERTY-BLUE-10-Filler text
+JAIL-NONE-0-Jail text
+PROPERTY-RED-10-Filler text
+PROPERTY-RED-10-Filler text
+CHANCE-NONE-0-Fill text
+PROPERTY-YELLOW-10-Filler text
+PROPERTY-YELLOW-10-Filler text
+FREEPARKING-NONE-0-Fill text
+PROPERTY-RED-10-Filler text
+PROPERTY-RED-10-Filler text
+CHANCE-NONE-0-Fill text
+PROPERTY-YELLOW-10-Filler text
+PROPERTY-YELLOW-10-Filler text
+GOJAIL-NONE-0-Jail text
+PROPERTY-GREEN-10-Filler text
+PROPERTY-GREEN-10-Filler text
+CHANCE-NONE-0-Fill text
+PROPERTY-BLUE-10-Filler text
+PROPERTY-BLUE-10-Filler text
