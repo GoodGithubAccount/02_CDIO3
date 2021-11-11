@@ -14,15 +14,17 @@ public class TXTReader {
 
         File txtFile = new File(txtToLoad);
 
-        String bigChungus = "";
+        String returnString = "";
         BufferedReader myReader = null;
         try {
             myReader = new BufferedReader(new FileReader("src/Game/" + txtFile));
+
             int line = myReader.read();
             while(line != -1){
-                bigChungus += (char)line;
+                returnString += (char)line;
                 line = myReader.read();
             }
+
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + txtFile);
@@ -32,7 +34,7 @@ public class TXTReader {
             e.printStackTrace();
         }
 
-        return bigChungus;
+        return returnString;
     }
 
 }

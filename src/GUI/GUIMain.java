@@ -3,6 +3,8 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 
+import Game.Field;
+
 public class GUIMain extends JPanel {
 
     // window size
@@ -17,9 +19,13 @@ public class GUIMain extends JPanel {
     private int startingPointX;
     private int startingPointY;
 
+    private Field[] myFields;
+    private JLabel[] fieldText;
 
+    public GUIMain(int width, int height, int gridCount, Field[] myFields){
+        this.myFields = myFields;
+        this.fieldText = new JLabel[gridCount];
 
-    public GUIMain(int width, int height, int gridCount){
         // Width of the panel in pixels
         this.width = width;
         this.height = height;
@@ -37,14 +43,13 @@ public class GUIMain extends JPanel {
         startingPointX = (int)Math.round((width / 2) - (gridSize * (gridCountLine / 2)));
         startingPointY = (int)Math.round((height / 2) - (gridSize * (gridCountLine / 2)));
 
-        JFrame frame = new JFrame("Test");
+        JFrame frame = new JFrame("Good Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
         frame.setSize(width, height);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         frame.add(Board);
+        frame.setVisible(true);
     }
 
     private JPanel Board = new JPanel(){
@@ -56,33 +61,44 @@ public class GUIMain extends JPanel {
             int currentPointY = startingPointY;
 
             String test = "GRAY";
-            Color myColor = Color.GRAY;
+            Color fieldColor = Color.GRAY;
 
             for(int i = 0; i < gridCount; i++){
-                g.setColor(myColor);
-                if(myColor == Color.GRAY) myColor = Color.LIGHT_GRAY;
-                else myColor = Color.GRAY;
+                g.setColor(fieldColor);
+                if(fieldColor == Color.GRAY) fieldColor = Color.LIGHT_GRAY;
+                else fieldColor = Color.GRAY;
+
+                Color propertyColor = ColorConverter.ConvertColor(myFields[i].getColor());
 
                 if(i == 0){
-                    g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
+                    // Do nothing
                 }
                 else if(i >= gridCountLine * 3 - 3) {
                     currentPointY -= gridSize;
-                    g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
                 }
                 else if(i >= gridCountLine * 2 - 2){
                     currentPointX -= gridSize;
-                    g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
                 }
                 else if(i >= gridCountLine - 1){
                     currentPointY += gridSize;
-                    g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
                 }
                 else{
                     currentPointX += gridSize;
-                    g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
                 }
+
+                g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
+
+                if(propertyColor != Color.WHITE){
+                    g.setColor(propertyColor);
+                    g.fillRect(currentPointX, currentPointY + gridSize - gridSize/5, gridSize, gridSize / 5);
+                }
+
+                fieldText[i] = new JLabel(myFields[i].getName());
+                fieldText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 5);
+
+                Board.add(fieldText[i]);
             }
         }
+
     };
 }

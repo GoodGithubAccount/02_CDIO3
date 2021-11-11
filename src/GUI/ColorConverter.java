@@ -24,8 +24,8 @@ public class ColorConverter {
             case "GREEN":
                 myColor = Color.GREEN;
                 break;
-            case "BROWN":
-                //myColor = Color.B;
+            case "ORANGE":
+                myColor = Color.ORANGE;
                 break;
             default:
                 myColor = Color.WHITE;

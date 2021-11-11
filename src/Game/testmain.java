@@ -27,8 +27,6 @@ public class testmain {
         }
 
 
-        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24);
-
-
+        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24, myFields);
     }
 }
