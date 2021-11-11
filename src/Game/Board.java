@@ -30,9 +30,7 @@ public class Board {
         }
     }
 
-    public Field[] getMyFields() {
-        return myFields;
-    }
+    public Field[] getMyFields() { return myFields; }
 }
 
 class Field {

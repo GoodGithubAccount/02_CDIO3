@@ -17,6 +17,8 @@ public class GUIMain extends JPanel {
     private int startingPointX;
     private int startingPointY;
 
+
+
     public GUIMain(int width, int height, int gridCount){
         // Width of the panel in pixels
         this.width = width;
@@ -53,6 +55,7 @@ public class GUIMain extends JPanel {
             int currentPointX = startingPointX;
             int currentPointY = startingPointY;
 
+            String test = "GRAY";
             Color myColor = Color.GRAY;
 
             for(int i = 0; i < gridCount; i++){
