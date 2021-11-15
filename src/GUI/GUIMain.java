@@ -35,13 +35,13 @@ public class GUIMain extends JPanel {
 
         // Sets the grid size according to the amount of grids and the screen size. Uses the limiting factor i.e the smallest of the two dimensions.
         this.gridCount = gridCount;
-        gridSize = limitingFactor / (gridCount / 2) + 10;
         gridCountLine = (gridCount / 4) + 1;
+        gridSize = limitingFactor / (gridCountLine + 1);
 
         // Gets the starting points according to the width of the screen, the amount of grids, and the amount of grids per line.
         // Done to center the board. Not perfect, but good enough.
         startingPointX = (int)Math.round((width / 2) - (gridSize * (gridCountLine / 2)));
-        startingPointY = (int)Math.round((height / 2) - (gridSize * (gridCountLine / 2)));
+        startingPointY = (int)Math.round((height / 2) - (gridSize * (gridCountLine / 2))) - 50;
 
         JFrame frame = new JFrame("Good Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
