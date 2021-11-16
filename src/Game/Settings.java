@@ -15,8 +15,8 @@ public final class Settings {
     public static final int BOARD_SIZE = 24;
 
     // Game GUI window size in pixels
-    public static final int WINDOW_HEIGHT = 900;
-    public static final int WINDOW_WIDTH = 1600;
+    public static final int WINDOW_HEIGHT = 750;
+    public static final int WINDOW_WIDTH = 1200;
 
     // Players
     public static final int MAX_PLAYERS = 4;
