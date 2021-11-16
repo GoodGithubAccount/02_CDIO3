@@ -2,7 +2,7 @@ package Game;
 
 public class Account {
     // Our start balance and balance.
-    private final int startbal = 1000;
+    private final int startbal = Settings.STARTING_MONEY;
     private int balance;
 
     // Sets balance to our startbalance
