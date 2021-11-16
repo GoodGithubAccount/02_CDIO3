@@ -12,7 +12,7 @@ public class ChancekortReader {
 
     public static String[] text() throws IOException {
         String[] ar = new String[42];
-        BufferedReader read = new BufferedReader(new FileReader("C:\\Users\\siggo\\IdeaProjects\\02_CDIO3iughb\\src\\Udskrift.txt"));
+        BufferedReader read = new BufferedReader(new FileReader("src/Game/Udskrift.txt"));
         int i = 0;
         while (true) {
             String ad = read.readLine();
