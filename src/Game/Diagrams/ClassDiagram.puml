@@ -1,31 +1,211 @@
 @startuml
-'https://plantuml.com/class-diagram
 
-abstract class AbstractList
-abstract AbstractCollection
-interface GUI
-class Account
-class Board
-class ChanceCardGenerate
-class ChanceMoneyOrMove
-class Die
-class Field
-class Player
-class Rafflecup
-class Settings
-class testmain
-class TXTreader
+  namespace Game {
+    class Game.Account {
+        - balance : int
+        - startbal : int
+        + Account()
+        + getBalance()
+        + newBalance()
+        + setBalance()
+    }
+  }
 
 
-class ArrayList {
-Object[] elementData
-size()
-}
+  namespace Game {
+    class Game.Board {
+        ~ boardSize : int
+        ~ fieldDatabase : String
+        ~ myFields : Field[]
+        + Board()
+        + generateBoard()
+        + getMyFields()
+        - loadFromTXT()
+    }
+  }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
-}
+
+  namespace Game {
+    class Game.Chance {
+        - id : int
+        - name : String
+        - text : String
+        + Chance()
+        + getId()
+        + getName()
+        + getText()
+        + setId()
+        + setName()
+        + toString()
+    }
+  }
+
+
+  namespace Game {
+    class Game.ChanceCardGenerate {
+        {static} + main()
+    }
+  }
+
+
+  namespace Game {
+    class Game.ChanceMoneyOrMove {
+        ~ getval : int
+        ~ move : int
+        ~ val : int
+        + ChanceMoneyOrMove()
+        + getGetval()
+        + getMove()
+        + getVal()
+        + setGetval()
+        + setMove()
+        + setVal()
+        + toString()
+    }
+  }
+
+
+  namespace Game {
+    class Game.ChancekortReader {
+        {static} + text()
+    }
+  }
+
+
+  namespace Game {
+    class Game.Die {
+        - faceAmount : int
+        - value : int
+        + Die()
+        + getFaceAmount()
+        + getValue()
+        + roll()
+        + setFaceAmount()
+        + setValue()
+        + toString()
+    }
+  }
+
+
+  namespace Game {
+    class Game.Field {
+        ~ color : String
+        ~ name : String
+        ~ price : int
+        + Field()
+        + getColor()
+        + getName()
+        + getOwner()
+        + getPrice()
+        + getfType()
+        + setOwner()
+    }
+  }
+
+
+  namespace Game {
+    enum fieldType {
+      CHANCE
+      FREEPARKING
+      GOJAIL
+      JAIL
+      PROPERTY
+      START
+    }
+  }
+
+
+  namespace Game {
+    class Game.Player {
+        ~ name : String
+        ~ playernumber : int
+        {static} - counter : int
+        + Player()
+        + getAc()
+        + getName()
+        + getPlayernumber()
+        + setAc()
+        + setName()
+        + setPlayernumber()
+    }
+  }
+
+
+  namespace Game {
+    class Game.Rafflecup {
+        - cup : Die[]
+        + Rafflecup()
+        + configure()
+        + getCup()
+        + roll()
+        + rollar()
+        + sum()
+    }
+  }
+
+
+  namespace Game {
+    class Game.Settings {
+        {static} + BOARD_SIZE : int
+        {static} + DIE_FACES : int
+        {static} + DIE_NUMBER : int
+        {static} + FIELD_DATABASE : String
+        {static} + GO_RESTROOM_MONEY : int
+        {static} + GO_SPOT_MONEY : int
+        {static} + MAX_PLAYERS : int
+        {static} + MIN_PLAYERS : int
+        {static} + PAY_SPOT_MONEY : int
+        {static} + STARTING_MONEY : int
+        {static} + WINDOW_HEIGHT : int
+        {static} + WINDOW_WIDTH : int
+        - Settings()
+    }
+  }
+
+
+  namespace Game {
+    class Game.TXTReader {
+        - txtToLoad : String
+        + TXTReader()
+        + readTXTFile()
+    }
+  }
+
+
+  namespace Game {
+    class Game.testmain {
+        {static} + main()
+    }
+  }
+  namespace GUI {
+      class GUI.ColorConverter {
+          {static} - myColor : Color
+          {static} + ConvertColor()
+      }
+    }
+
+
+    namespace GUI {
+      class GUI.GUIMain {
+          ~ gridCountLine : int
+          - Board : JPanel
+          - fieldText : JLabel[]
+          - gridCount : int
+          - gridSize : int
+          - height : int
+          - limitingFactor : int
+          - myFields : Field[]
+          - startingPointX : int
+          - startingPointY : int
+          - width : int
+          + GUIMain()
+      }
+    }
+
+  Game.ChanceMoneyOrMove -up-|> Game.Chance
+  Game.Field o-- Game.Field.fieldType : fType
+  Game.Field o-- Game.Player : owner
+  Game.Field +-down- Game.Field.fieldType
+  Game.Player o-- Game.Account : ac
 
 @enduml
