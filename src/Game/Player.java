@@ -48,7 +48,7 @@ public class Player {
 
     public void setPosition(int position) {
         if (this.position + position > Settings.BOARD_SIZE) {
-            this.position += position - 24;
+            this.position += position - Settings.BOARD_SIZE;
         }
         else this.position+=position;
     }
