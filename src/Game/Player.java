@@ -11,8 +11,11 @@ public class Player {
 
     public Player(String name) {
         this.name = name;
+
         this.playerNumber = counter;
         counter++;
+
+        playerAccount = new Account();
     }
 
     public String getName() {
@@ -35,13 +38,9 @@ public class Player {
         return playerAccount;
     }
 
-    public void setAc(Account ac) {
-        this.playerAccount = playerAccount;
-    }
-
     @Override
     public String toString() {
-        return this.name + " Playernumber: " + playernumber;
+        return this.name + " Playernumber: " + playerNumber;
     }
 
     public int getPosition() {
