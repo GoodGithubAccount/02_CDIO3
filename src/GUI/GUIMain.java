@@ -65,7 +65,7 @@ public class GUIMain extends JPanel {
             String test = "GRAY";
             Color fieldColor = Color.GRAY;
 
-            for(int c = 0; c < playerCount)
+          // for(int c = 0; c < playerCount) //todo
 
             for(int i = 0; i < gridCount; i++){
                 g.setColor(fieldColor);
