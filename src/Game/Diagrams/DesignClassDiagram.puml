@@ -1,5 +1,7 @@
 @startuml
 
+skinparam classAttributeIconSize 0
+
   namespace Game {
     class Game.Account {
         - balance : int
@@ -203,9 +205,13 @@
     }
 
   Game.ChanceMoneyOrMove -up-|> Game.Chance
-  Game.Field o-- Game.Field.fieldType : fType
+
   Game.Field o-- Game.Player : owner
   Game.Field +-down- Game.Field.fieldType
   Game.Player o-- Game.Account : ac
+    Game.Field --|> Game.Board
+    Game.Settings --|> Game.Board
+Game.ChancekortReader <--- Game.ChanceCardGenerate
+Game.Die ---> Game.Rafflecup
 
 @enduml
