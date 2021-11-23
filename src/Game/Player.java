@@ -8,6 +8,7 @@ public class Player {
     private int playerNumber;
 
     private int position = 0;
+    private boolean isjailed=false;
 
     public Player(String name) {
         this.name = name;
@@ -51,6 +52,14 @@ public class Player {
         if (this.position + position > Settings.BOARD_SIZE-1) {
             this.position += position - Settings.BOARD_SIZE-1;
         } else this.position += position;
+    }
+
+    public boolean isIsjailed() {
+        return isjailed;
+    }
+
+    public void setIsjailed(boolean isjailed) {
+        this.isjailed = isjailed;
     }
 }
 

@@ -54,6 +54,12 @@ public class testmain {
     }
 
     public static void turn(Player player, Rafflecup r1, Board myboard) {
+        //Tjekker om spilleren skal være i fængsel og frikender spilleren.
+        if (player.isIsjailed()) {
+            System.out.println("Du er i fængsel og er blevet sprunget over, du er fri i næste tur");
+            player.setIsjailed(false);
+            return;
+        }
         //Slag
         System.out.println("Roll the die ");
         int sum = r1.sum();
@@ -83,6 +89,7 @@ public class testmain {
                 break;
             case GOJAIL:
                 player.setPosition(6);
+                player.setIsjailed(true);
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 break;
