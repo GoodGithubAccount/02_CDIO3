@@ -79,6 +79,7 @@ public class testmain {
             case PROPERTY:
                 if (f1.owner == null) {
                     f1.owner = player;
+
                 } else {
                     f1.owner.getAc().newBalance(f1.price);
                 }
