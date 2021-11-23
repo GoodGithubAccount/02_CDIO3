@@ -21,9 +21,5 @@ public class Account {
     // Updates the balance and also makes sure it doesn't go below 0
     public void newBalance (int ubalance){
         this.balance += ubalance;
-
-        if(this.balance < 0){
-            this.balance = 0;
-        }
     }
 }
