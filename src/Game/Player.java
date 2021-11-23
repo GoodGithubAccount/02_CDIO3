@@ -2,13 +2,16 @@ package Game;
 
 public class Player {
     String name;
-    int playernumber;
-    Account ac;
+    Account playerAccount;
+
+    int playerNumber;
     private static int counter=1;
 
     public Player(String name) {
         this.name = name;
-        this.playernumber = counter;
+        this.playerNumber = counter;
+
+        playerAccount = new Account();
         counter++;
     }
 
@@ -21,19 +24,15 @@ public class Player {
     }
 
     public int getPlayernumber() {
-        return playernumber;
+        return playerNumber;
     }
 
     public void setPlayernumber(int playernumber) {
-        this.playernumber = playernumber;
+        this.playerNumber = playerNumber;
     }
 
-    public Account getAc() {
-        return ac;
-    }
-
-    public void setAc(Account ac) {
-        this.ac = ac;
+    public Account getAccount() {
+        return playerAccount;
     }
 }
 
