@@ -46,4 +46,5 @@ myChance = new Chance[chance.length];
 
         }
     }
+
 }
