@@ -16,7 +16,7 @@ Main "1" -r "2..4" Player: Includes
 Main "1" -l "1" Die: Includes
 Main "1" -- "24" Field: Includes
 
-Gui "1" --"1" Main: Includes
+Gui "1"--"1" Main: Includes
 
 Player "2..4" -- "1" Account: Includes
 
