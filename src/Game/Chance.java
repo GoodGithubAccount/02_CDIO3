@@ -3,7 +3,7 @@ package Game;
 public class Chance {
 
     public enum cardType{
-        NAME,TEXT,ID,MONEY,MOVE,TYPE
+        GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANCEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
     }
 
     cardType cType;
