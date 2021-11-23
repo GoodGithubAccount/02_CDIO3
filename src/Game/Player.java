@@ -2,15 +2,20 @@ package Game;
 
 public class Player {
     private String name;
-    private int playernumber;
-    private Account ac;
-    private int position = 0;
+    private Account playerAccount;
+
     private static int counter = 1;
+    private int playerNumber;
+
+    private int position = 0;
 
     public Player(String name) {
         this.name = name;
-        this.playernumber = counter;
+
+        this.playerNumber = counter;
         counter++;
+
+        playerAccount = new Account();
     }
 
     public String getName() {
@@ -22,24 +27,20 @@ public class Player {
     }
 
     public int getPlayernumber() {
-        return playernumber;
+        return playerNumber;
     }
 
-    public void setPlayernumber(int playernumber) {
-        this.playernumber = playernumber;
+    public void setPlayernumber(int playerNumber) {
+        this.playerNumber = playerNumber;
     }
 
     public Account getAc() {
-        return ac;
-    }
-
-    public void setAc(Account ac) {
-        this.ac = ac;
+        return playerAccount;
     }
 
     @Override
     public String toString() {
-        return this.name + " Playernumber: " + playernumber;
+        return this.name + " Playernumber: " + playerNumber;
     }
 
     public int getPosition() {
@@ -49,8 +50,7 @@ public class Player {
     public void setPosition(int position) {
         if (this.position + position > Settings.BOARD_SIZE) {
             this.position += position - Settings.BOARD_SIZE;
-        }
-        else this.position+=position;
+        } else this.position += position;
     }
 }
 
