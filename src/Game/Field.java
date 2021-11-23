@@ -43,4 +43,9 @@ public class Field {
     }
 
     public fieldType getfType() { return fType; }
+
+    public String toString(){
+        return this.name+" "+this.price;
+
+    }
 }
