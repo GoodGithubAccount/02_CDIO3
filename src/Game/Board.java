@@ -40,11 +40,19 @@ public class Board {
         String Temp = loadFromTXT(chanceDatabase);
 
         String[] chance = Temp.split("\n");
-myChance = new Chance[chance.length];
+        myChance = new Chance[chance.length];
         for (int i = 0; i <chance.length; i++) {
             String[] chanceProperties = chance[i].split("-");
-
+            myChance[i] = new Chance(chanceProperties[0], chanceProperties[1], Integer.parseInt(chanceProperties[3]), chanceProperties[4], Integer.parseInt(chanceProperties[5]), Chance.cardType.valueOf(chanceProperties[6]));
         }
     }
+
+    public void shuffleChance(){
+        List<Chance> chanceList = Arrays.asList(myChance);
+        Collections.shuffle(chanceList);
+        chanceList.toArray(myChance);
+    }
+
+    public Field[] getMyFields() { return myFields; }
 
 }
