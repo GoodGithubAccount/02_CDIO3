@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.*;
+
 public class Board {
 
     int boardSize;
@@ -29,7 +31,8 @@ public class Board {
         for (int i = 0; i < boardSize; i++) {
             String[] fieldProperties = fields[i].split("-");
 
-            myFields[i] = new Field(Field.fieldType.valueOf(fieldProperties[0]), fieldProperties[1], Integer.parseInt(fieldProperties[2]), fieldProperties[3]);
+            myFields[i] = new Field(Field.fieldType.valueOf(fieldProperties[0]), fieldProperties[1],
+                    Integer.parseInt(fieldProperties[2]), fieldProperties[3]);
         }
     }
 
@@ -37,10 +40,18 @@ public class Board {
         String Temp = loadFromTXT(chanceDatabase);
 
         String[] chance = Temp.split("\n");
-myChance = new Chance[chance.length];
-        for (int i = 0; i <chance.length; i++) {
+        myChance = new Chance[chance.length];
+        for (int i = 0; i < chance.length; i++) {
             String[] chanceProperties = chance[i].split("-");
-
+            myChance[i] = new Chance(chanceProperties[0], chanceProperties[1], Integer.parseInt(chanceProperties[2]),
+                    chanceProperties[3], Integer.parseInt(chanceProperties[4]), Chance.cardType.valueOf(chanceProperties[5]));
         }
+    }
+
+    public void shuffleChance() {
+        List<Chance> chanceMix = Arrays.asList(myChance);
+        Collections.shuffle(chanceMix);
+        chanceMix.toArray(myChance);
+
     }
 }
