@@ -28,6 +28,7 @@ public final class Settings {
     public static final int GO_SPOT_MONEY = 2;
     public static final int PAY_SPOT_MONEY = -2;
     public static final int GO_RESTROOM_MONEY = -3;
+    public static final int SOLD_SIGNS=12;
 
     // Game.Die
     public static final int DIE_NUMBER = 2;
