@@ -69,12 +69,13 @@ public class testmain {
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
+        Field f1 = myboard.getMyFields()[player.getPosition()];
+
         //Standard miste penge på felts værdi
         player.setPosition(player.getPosition() + sum);
-        player.getAc().newBalance(-myboard.getMyFields()[player.getPosition()].price);
+        player.getAc().newBalance(-f1.price);
 
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
-        Field f1 = myboard.getMyFields()[player.getPosition()];
         switch (f1.fType) {
             case PROPERTY:
                 if (f1.owner == null) {
@@ -83,8 +84,6 @@ public class testmain {
                         System.out.println("Du er nu den stolte ejer af dette felt");
                     } else
                         System.out.println("Du har ikke flere billeter du kan derfor ikke købe denne grund");
-
-
                 } else {
                     if (f1.owner.equals(player)) {
                         System.out.println("Du ejer denne grund og der sker derfor ingentin");
