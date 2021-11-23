@@ -66,7 +66,7 @@ public class testmain {
         System.out.println("du slog" + sum);
 
         //Tjek om spiller går over start
-        if (player.getPosition() > 23)
+        if (player.getPosition() > Settings.BOARD_SIZE-1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
         //Standard miste penge på felts værdi
