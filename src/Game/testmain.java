@@ -5,6 +5,7 @@ import Game.Rafflecup;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class testmain {
 
@@ -28,5 +29,17 @@ public class testmain {
 
 
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24, myFields);
+    }
+    public Player[] generateplayers(int amount){
+        Scanner playername= new Scanner(System.in);
+
+        Player[] players= new Player[amount];
+        for (int i = 0; i < amount; i++) {
+            System.out.println("Indtast navn på spiller: "+i);
+            players[i]=new Player(playername.nextLine());
+
+        }
+        return players;
+
     }
 }
