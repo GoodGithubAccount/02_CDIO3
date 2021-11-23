@@ -97,6 +97,7 @@ public class testmain {
             case START:
                 break;
             case GOJAIL:
+                System.out.println("Du er røget i fængsel");
                 player.setPosition(6);
                 player.setIsjailed(true);
             case CHANCE:
