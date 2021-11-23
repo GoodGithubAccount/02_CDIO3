@@ -9,6 +9,7 @@ public class Player {
 
     private int position = 0;
     private boolean isjailed=false;
+    private int soldSigns=Settings.SOLD_SIGNS;
 
     public Player(String name) {
         this.name = name;
@@ -60,6 +61,22 @@ public class Player {
 
     public void setIsjailed(boolean isjailed) {
         this.isjailed = isjailed;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public int getSoldSigns() {
+        return soldSigns;
+    }
+
+    public void setSoldSigns(int soldSigns) {
+        this.soldSigns = soldSigns;
     }
 }
 
