@@ -27,7 +27,7 @@ public class testmain {
         String test = myReader.readTXTFile();
         System.out.println(test);
 
-        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.BOARD_SIZE);
+        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
         myBoard.generateBoard();
 
         Field[] myFields = myBoard.getMyFields();
