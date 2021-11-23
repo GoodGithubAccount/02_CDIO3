@@ -5,21 +5,23 @@ public class Board {
     int boardSize;
 
     String fieldDatabase;
+    String chanceDatabase;
     Field[] myFields;
 
-    public Board(String fieldDatabase, int boardSize){
+    public Board(String fieldDatabase, String chanceDatabase, int boardSize){
         this.fieldDatabase = fieldDatabase;
+        this.chanceDatabase = chanceDatabase;
         this.boardSize = boardSize;
         this.myFields = new Field[boardSize];
     }
 
-    private String loadFromTXT(){
-        TXTReader myReader = new TXTReader(fieldDatabase);
+    private String loadFromTXT(String txtDatabase){
+        TXTReader myReader = new TXTReader(txtDatabase);
         return myReader.readTXTFile();
     }
 
     public void generateBoard(){
-        String Temp = loadFromTXT();
+        String Temp = loadFromTXT(fieldDatabase);
 
         String[] fields = Temp.split("\n");
 
