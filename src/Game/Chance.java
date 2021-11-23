@@ -10,18 +10,18 @@ public class Chance {
     String name;
     String text;
     int id;
-    int money;
+    String value;
     int move;
 
     // Navn-tekst-id-value-move-Type    Colors/space id: orange=0, green=1, lightblue=2, pink=3, blue=4, red=5, brown=6, yellow=7, start=8, Pier=9, Skatepark=10
 
-    public Chance(String name, int id, String text,cardType cType,int move, int money) {
+    public Chance(String name, int id, String text,cardType cType,int move, String value) {
         this.name = name;
         this.id = id;
         this.text=text;
         this.cType=cType;
         this.move=move;
-        this.money=money;
+        this.value = value;
     }
 
 
@@ -37,7 +37,7 @@ public class Chance {
 
     public cardType getCType(){return cType;}
 
-    public int getMoney(){return money;}
+    public String getValue(){return value;}
 
     public int getMove(){return move;}
 
