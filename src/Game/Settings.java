@@ -10,6 +10,7 @@ public final class Settings {
 
     // Text Database(s)
     public static final String FIELD_DATABASE = "fieldDatabase.txt";
+    public static final String CHANCE_DATABASE = "chanceDatabase.txt";
 
     // Game.Board
     public static final int BOARD_SIZE = 24;
@@ -27,6 +28,7 @@ public final class Settings {
     public static final int GO_SPOT_MONEY = 2;
     public static final int PAY_SPOT_MONEY = -2;
     public static final int GO_RESTROOM_MONEY = -3;
+    public static final int SOLD_SIGNS=12;
 
     // Game.Die
     public static final int DIE_NUMBER = 2;

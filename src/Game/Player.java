@@ -8,6 +8,8 @@ public class Player {
     private int playerNumber;
 
     private int position = 0;
+    private boolean isjailed=false;
+    private int soldSigns=Settings.SOLD_SIGNS;
 
     public Player(String name) {
         this.name = name;
@@ -48,9 +50,33 @@ public class Player {
     }
 
     public void setPosition(int position) {
-        if (this.position + position > Settings.BOARD_SIZE) {
-            this.position += position - Settings.BOARD_SIZE;
+        if (this.position + position > Settings.BOARD_SIZE-1) {
+            this.position += position - Settings.BOARD_SIZE-1;
         } else this.position += position;
+    }
+
+    public boolean isIsjailed() {
+        return isjailed;
+    }
+
+    public void setIsjailed(boolean isjailed) {
+        this.isjailed = isjailed;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public int getSoldSigns() {
+        return soldSigns;
+    }
+
+    public void setSoldSigns(int soldSigns) {
+        this.soldSigns = soldSigns;
     }
 }
 

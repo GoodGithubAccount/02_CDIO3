@@ -12,8 +12,6 @@ skinparam classAttributeIconSize 0
         + setBalance()
     }
   }
-
-
   namespace Game {
     class Game.Board {
         ~ boardSize : int
@@ -25,7 +23,6 @@ skinparam classAttributeIconSize 0
         - loadFromTXT()
     }
   }
-
 
   namespace Game {
     class Game.Chance {
@@ -56,7 +53,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
   namespace Game {
     class Game.Field {
         ~ color : String
@@ -72,7 +68,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
   namespace Game {
     enum fieldtype {
       CHANCE
@@ -83,7 +78,6 @@ skinparam classAttributeIconSize 0
       START
     }
   }
-
 
   namespace Game {
     class Game.Player {
@@ -100,7 +94,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
   namespace Game {
     class Game.Rafflecup {
         - cup : Die[]
@@ -112,7 +105,6 @@ skinparam classAttributeIconSize 0
         + sum()
     }
   }
-
 
   namespace Game {
     class Game.Settings {
@@ -132,7 +124,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
   namespace Game {
     class Game.TXTReader {
         - txtToLoad : String
@@ -147,7 +138,6 @@ skinparam classAttributeIconSize 0
           {static} + ConvertColor()
       }
     }
-
 
     namespace GUI {
       class GUI.GUIMain {
@@ -175,4 +165,6 @@ Game.Die ---> Game.Rafflecup
 Game.fieldtype ---> "1" Game.Field
 Game.Settings ---> GUI.GUIMain
 Game.Chance ---> Game.fieldtype
+
+
 @enduml
