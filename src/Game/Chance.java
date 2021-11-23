@@ -3,7 +3,7 @@ package Game;
 public class Chance {
 
     public enum cardType{
-        GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANCEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
+        GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANGEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
     }
 
     cardType cType;
@@ -13,6 +13,7 @@ public class Chance {
     int money;
     int move;
 
+    // Navn-tekst-id-value-move-Type    Colors/space id: orange=0, green=1, lightblue=2, pink=3, blue=4, red=5, brown=6, yellow=7, start=8, Pier=9, Skatepark=10
 
     public Chance(String name, int id, String text,cardType cType,int move, int money) {
         this.name = name;

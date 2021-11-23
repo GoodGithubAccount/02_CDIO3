@@ -1,7 +1,6 @@
 package Game;
 
 import GUI.GUIMain;
-import Game.Rafflecup;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class testmain {
             System.out.println("Hvor mange spillere er i man kan spille mellem 2 og 4 spillere");
             int amountplaYER = playeramount.nextInt();
 
-            if (amountplaYER >= 2 || amountplaYER >= 4)
+            if (amountplaYER >= 2 && amountplaYER <= 4)
                 players = generateplayers(amountplaYER);
             break;
         }
@@ -55,6 +54,12 @@ public class testmain {
     }
 
     public static void turn(Player player, Rafflecup r1, Board myboard) {
+        //Tjekker om spilleren skal være i fængsel og frikender spilleren.
+        if (player.isIsjailed()) {
+            System.out.println("Du er i fængsel og er blevet sprunget over, du er fri i næste tur");
+            player.setIsjailed(false);
+            return;
+        }
         //Slag
         System.out.println("Roll the die ");
         int sum = r1.sum();
@@ -64,7 +69,7 @@ public class testmain {
         if (player.getPosition() > 23)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
-        //Standard miste penge på flets værdi
+        //Standard miste penge på felts værdi
         player.setPosition(player.getPosition() + sum);
         player.getAc().newBalance(myboard.getMyFields()[player.getPosition()].price);
 
@@ -80,9 +85,11 @@ public class testmain {
                 break;
             case FREEPARKING:
             case JAIL:
+            case START:
                 break;
             case GOJAIL:
                 player.setPosition(6);
+                player.setIsjailed(true);
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 break;
