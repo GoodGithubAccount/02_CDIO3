@@ -1,7 +1,6 @@
 package Game;
 
 import GUI.GUIMain;
-import Game.Rafflecup;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -10,15 +9,15 @@ import java.util.Scanner;
 public class testmain {
 
     public static void main(String[] args) {
-        Rafflecup r1=new Rafflecup(1,6);
+        Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
         Scanner playeramount = new Scanner(System.in);
-        Player[] players=new Player[0];
+        Player[] players = new Player[0];
         while (true) {
             System.out.println("Hvor mange spillere er i man kan spille mellem 2 og 4 spillere");
             int amountplaYER = playeramount.nextInt();
 
-            if (amountplaYER >= 2 || amountplaYER >= 4)
+            if (amountplaYER >= 2 && amountplaYER <= 4)
                 players = generateplayers(amountplaYER);
             break;
         }
@@ -53,15 +52,41 @@ public class testmain {
         return players;
 
     }
-    public static void turn(Player player, Rafflecup r1, Board myboard){
+
+    public static void turn(Player player, Rafflecup r1, Board myboard) {
+        //Slag
         System.out.println("Roll the die ");
-        int sum=r1.sum();
-        System.out.println("du slog"+sum);
-        player.setPosition(player.getPosition()+ sum);
-        player.getAc().setBalance(myboard.getMyFields()[player.getPosition()].price);
+        int sum = r1.sum();
+        System.out.println("du slog" + sum);
 
+        //Tjek om spiller går over start
+        if (player.getPosition() > 23)
+            player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
+        //Standard miste penge på felts værdi
+        player.setPosition(player.getPosition() + sum);
+        player.getAc().newBalance(myboard.getMyFields()[player.getPosition()].price);
 
+        //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
+        Field f1 = myboard.getMyFields()[player.getPosition()];
+        switch (f1.fType) {
+            case PROPERTY:
+                if (f1.owner == null) {
+                    f1.owner = player;
+                } else {
+                    f1.owner.getAc().newBalance(f1.price);
+                }
+                break;
+            case FREEPARKING:
+            case JAIL:
+            case START:
+                break;
+            case GOJAIL:
+                player.setPosition(6);
+            case CHANCE:
+                //Når chance metoden kommer vil der skrives noget i denne branch af switchen
+                break;
+        }
 
 
     }
