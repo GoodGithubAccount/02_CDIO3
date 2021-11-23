@@ -1,4 +1,3 @@
-Navn-tekst-id-value-move-Type    Colors/space id: orange=0, green=1, lightblue=2, pink=3, blue=4, red=5, brown=6, yellow=7, start=8, Pier=9, Skatepark=10
 Give car the card-Give this card to the CAR and take another chance card. Car: You have the opportunity to move to a property of your choosing and buy it. If there arent any unoccupied properties, you have to buy one of another player-1-1-0-GIVEPLAYERCARD
 Move to START-Move to start and receive $2-2-2-8-MOVETOSPACE
 Move up to 5 forward-Move up to 5 spaces forward.-3-0-5-MOVECERTAINDISTANCE
