@@ -37,10 +37,11 @@ public class Board {
         String Temp = loadFromTXT(chanceDatabase);
 
         String[] chance = Temp.split("\n");
-myChance = new Chance[chance.length];
+        myChance = new Chance[chance.length];
         for (int i = 0; i <chance.length; i++) {
             String[] chanceProperties = chance[i].split("-");
-
         }
     }
+
+    public Field[] getMyFields() { return myFields; }
 }
