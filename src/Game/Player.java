@@ -62,6 +62,22 @@ public class Player {
     public void setIsjailed(boolean isjailed) {
         this.isjailed = isjailed;
     }
+
+    public int getPlayerNumber() {
+        return playerNumber;
+    }
+
+    public void setPlayerNumber(int playerNumber) {
+        this.playerNumber = playerNumber;
+    }
+
+    public int getSoldSigns() {
+        return soldSigns;
+    }
+
+    public void setSoldSigns(int soldSigns) {
+        this.soldSigns = soldSigns;
+    }
 }
 
 
