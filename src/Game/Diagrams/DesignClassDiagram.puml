@@ -42,38 +42,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
-  namespace Game {
-    class Game.ChanceCardGenerate {
-        {static} + main()
-    }
-  }
-
-
-  namespace Game {
-    class Game.ChanceMoneyOrMove {
-        ~ getval : int
-        ~ move : int
-        ~ val : int
-        + ChanceMoneyOrMove()
-        + getGetval()
-        + getMove()
-        + getVal()
-        + setGetval()
-        + setMove()
-        + setVal()
-        + toString()
-    }
-  }
-
-
-  namespace Game {
-    class Game.ChancekortReader {
-        {static} + text()
-    }
-  }
-
-
   namespace Game {
     class Game.Die {
         - faceAmount : int
@@ -106,7 +74,7 @@ skinparam classAttributeIconSize 0
 
 
   namespace Game {
-    enum fieldType {
+    enum fieldtype {
       CHANCE
       FREEPARKING
       GOJAIL
@@ -173,12 +141,6 @@ skinparam classAttributeIconSize 0
     }
   }
 
-
-  namespace Game {
-    class Game.testmain {
-        {static} + main()
-    }
-  }
   namespace GUI {
       class GUI.ColorConverter {
           {static} - myColor : Color
@@ -204,14 +166,13 @@ skinparam classAttributeIconSize 0
       }
     }
 
-  Game.ChanceMoneyOrMove -up-|> Game.Chance
-
   Game.Field o-- Game.Player : owner
-  Game.Field +-down- Game.Field.fieldType
+
   Game.Player o-- Game.Account : ac
     Game.Field --|> Game.Board
     Game.Settings --|> Game.Board
-Game.ChancekortReader <--- Game.ChanceCardGenerate
 Game.Die ---> Game.Rafflecup
-
+Game.fieldtype ---> "1" Game.Field
+Game.Settings ---> GUI.GUIMain
+Game.Chance ---> Game.fieldtype
 @enduml
