@@ -21,10 +21,12 @@ public class GUIMain extends JPanel {
 
     private Field[] myFields;
     private JLabel[] fieldText;
+    private JLabel[] fieldOwnerText;
 
     public GUIMain(int width, int height, int gridCount, Field[] myFields){
         this.myFields = myFields;
         this.fieldText = new JLabel[gridCount];
+        this.fieldOwnerText = new JLabel[gridCount];
 
         // Width of the panel in pixels
         this.width = width;
@@ -91,10 +93,22 @@ public class GUIMain extends JPanel {
                 if(propertyColor != Color.WHITE){
                     g.setColor(propertyColor);
                     g.fillRect(currentPointX, currentPointY + gridSize - gridSize/5, gridSize, gridSize / 5);
+
+                    if(myFields[i].getOwner() == null){
+                        fieldOwnerText[i] = new JLabel("Test");
+                                //new JLabel(myFields[i].getOwner().getName());
+                        fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize);
+                        fieldOwnerText[i].setVerticalAlignment(SwingConstants.BOTTOM);
+                        fieldOwnerText[i].setHorizontalAlignment(SwingConstants.RIGHT);
+                        Board.add(fieldOwnerText[i]);
+                    }
                 }
 
                 fieldText[i] = new JLabel(myFields[i].getName());
+                fieldText[i].setHorizontalAlignment(SwingConstants.CENTER);
                 fieldText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 5);
+
+
 
                 Board.add(fieldText[i]);
             }
