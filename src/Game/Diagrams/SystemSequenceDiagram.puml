@@ -2,20 +2,25 @@
 'https://plantuml.com/sequence-diagram
 
 actor Player
+System -> Player: startProgram();
+loop new game
 System <- Player: startingGame();
 System -> Player: askPlayerAmount();
 Player --> System: playerAmount
-
+loop no winner
 loop 2..4
 
 System -> Player : askPlayerName();
 Player --> System: name
 System -> System: createPlayer
 end
-loop new game. 2..4
+loop  2..4
 System -> Player: rollDie();
 Player --> System: dieValue
 System --> Player: movePlayer
-
+end
+end
+System -> Player: askPlayerNewGame();
+Player --> System: playNewGame
 end
 @enduml
