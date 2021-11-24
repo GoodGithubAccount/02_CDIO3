@@ -1,0 +1,21 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+actor Player
+System <- Player: startingGame();
+System -> Player: askPlayerAmount();
+Player --> System: playerAmount
+
+loop 2..4
+
+System -> Player : askPlayerName();
+Player --> System: name
+System -> System: createPlayer
+end
+loop new game. 2..4
+System -> Player: rollDie();
+Player --> System: dieValue
+System --> Player: movePlayer
+
+end
+@enduml
