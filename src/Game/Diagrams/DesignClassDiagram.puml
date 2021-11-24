@@ -156,15 +156,15 @@ skinparam classAttributeIconSize 0
       }
     }
 
-  Game.Field o-- Game.Player : owner
+  Game.Field o-- "1" Game.Player : owner
 
   Game.Player o-- Game.Account : ac
     Game.Field --|> Game.Board
     Game.Settings --|> Game.Board
-Game.Die ---> Game.Rafflecup
-Game.fieldtype ---> "1" Game.Field
+Game.Die <--- Game.Rafflecup
+Game.fieldtype --|> "1" Game.Field
 Game.Settings ---> GUI.GUIMain
-Game.Chance ---> Game.fieldtype
-
+Game.Chance --|> Game.fieldtype
+Game.TXTReader --o Game.Board
 
 @enduml
