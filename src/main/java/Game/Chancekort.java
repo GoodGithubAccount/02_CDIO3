@@ -6,7 +6,11 @@ public class Chancekort {
     public enum ChancekortTypes {
         MoveToStart,
         Move5Forward,
-        Give2ToBank
+        Give2ToBank,
+        DoneAlleHomework,
+        MoveToSkatepark,
+        MoveToPear,
+
     }
 
     public ChancekortTypes DrawRandomChanceCard() {
@@ -16,7 +20,7 @@ public class Chancekort {
 
     public void chancekorthandling(ChancekortTypes chancekort, Board board, Player player) {
         switch (chancekort) {
-            // Test at MoveToStart sætter til start.
+
             case MoveToStart:
                 player.setPosition(0);
                 break;
@@ -32,6 +36,22 @@ public class Chancekort {
             case Give2ToBank:
                 int x = player.getAc().getBalance();
                 player.getAc().setBalance(x - 2);
+
+                break;
+
+            case DoneAlleHomework:
+                int y = player.getAc().getBalance();
+                player.getAc().setBalance(y + 2);
+
+                break;
+// Burde få skatepark gratis, men er ikke implementeret.
+            case MoveToSkatepark:
+                player.setPosition(10);
+
+                break;
+
+            case MoveToPear:
+                player.setPosition(23);
 
                 break;
         }
