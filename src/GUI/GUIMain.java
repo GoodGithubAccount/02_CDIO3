@@ -147,7 +147,7 @@ public class GUIMain extends JPanel {
                     Board.add(fieldOwnerText[i]);
                 }
 
-                fieldText[i] = new JLabel(myFields[i].getName());
+                fieldText[i] = new JLabel(i + " | " + myFields[i].getName());
                 fieldText[i].setHorizontalAlignment(SwingConstants.CENTER);
                 fieldText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 5);
 

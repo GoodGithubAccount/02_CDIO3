@@ -1,6 +1,7 @@
 package Game;
 
 import GUI.GUIMain;
+import GUI.PopupBox;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,6 +10,9 @@ import java.util.Scanner;
 public class testmain {
 
     public static void main(String[] args) {
+        PopupBox myPop = new PopupBox("Test", "FUCK");
+        System.out.println(myPop.popup());
+
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
