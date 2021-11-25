@@ -2,13 +2,15 @@ package Game;
 
 import GUI.GUIMain;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class testmain {
+public class GameHandler {
 
-    public static void main(String[] args) {
+    public GameHandler(){
+
+    }
+
+    public void startGame(){
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
@@ -29,7 +31,7 @@ public class testmain {
         myGui.updateGUI("Test");
     }
 
-    public static Player[] generateplayers(int amount) {
+    public Player[] generateplayers(int amount) {
         Scanner myScanner = new Scanner(System.in);
 
         Player[] players = new Player[amount];
@@ -41,7 +43,7 @@ public class testmain {
         return players;
     }
 
-    public static void turn(Player player, Rafflecup r1, Board myboard) {
+    public void turn(Player player, Rafflecup r1, Board myboard) {
         //Tjekker om spilleren skal være i fængsel og frikender spilleren.
         if (player.isIsjailed()) {
             System.out.println("Du er i fængsel og er blevet sprunget over, du er fri i næste tur");
@@ -92,7 +94,5 @@ public class testmain {
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 break;
         }
-
-
     }
 }
