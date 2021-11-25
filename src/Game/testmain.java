@@ -23,27 +23,11 @@ public class testmain {
             break;
         }
 
-
-        TXTReader myReader = new TXTReader(Settings.FIELD_DATABASE);
-        String test = myReader.readTXTFile();
-        System.out.println(test);
-
+        // Generates the play board. 
         Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
         myBoard.generateBoard();
 
-        Field[] myFields = myBoard.getMyFields();
-
-        for (int i = 0; i < Settings.BOARD_SIZE; i++) {
-            System.out.println("NUMBER " + i + ": " + myFields[i].getfType() + myFields[i].getColor() + myFields[i].getPrice() + myFields[i].getName());
-        }
-
-        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24, myFields, players, amountPlayer);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        players[1].getAc().newBalance(200);
+        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, amountPlayer);
         myGui.updateGUI();
     }
 

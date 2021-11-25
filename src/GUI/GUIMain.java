@@ -13,23 +13,27 @@ public class GUIMain extends JPanel {
     private int height;
     private int limitingFactor;
 
+    // Gridsize and count
     private int gridSize;
     private int gridCount;
     private int gridCountLine;
 
+    // GUI Starting point
     private int startingPointX;
     private int startingPointY;
 
+    // Field data
     private Field[] myFields;
     private JLabel[] fieldText;
     private JLabel[] fieldOwnerText;
 
-    private JLabel[] playerText;
-
+    // Player data
     private int playerCount;
     private Player[] myPlayers;
+    private JLabel[] playerText;
     private Color[] playerColors;
 
+    // Player representations offsets
     private int[] playerOffsetX;
     private int[] playerOffsetY;
 
@@ -75,9 +79,10 @@ public class GUIMain extends JPanel {
         frame.setVisible(true);
     }
 
+    // Function to make gui redraw the whole board
     public void updateGUI(){
         Board.removeAll();
-        Board.updateUI();
+        Board.repaint();
     }
 
     private JPanel Board = new JPanel(){
