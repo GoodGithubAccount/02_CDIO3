@@ -3,15 +3,15 @@ package Game;
 import GUI.GUIMain;
 import GUI.PopupBox;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class GameHandler {
+public class testmain {
 
-    public GameHandler(){
-
-    }
-
-    public void startGame() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
+        String[] udskrift=TXTReader.readTXTFtoar("Udskrift.txt");
+        System.out.println(Arrays.toString(udskrift));
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
@@ -19,7 +19,7 @@ public class GameHandler {
 
         int playerAmount=100;
         while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
-            PopupBox myPop = new PopupBox("Indtast antal spillere", "Min 2 max 4");
+            PopupBox myPop = new PopupBox(udskrift[0], "Min 2 max 4");
             playerAmount = myPop.popup().charAt(0) - 48;
         }
         Player[] players = generateplayers(playerAmount);
@@ -31,15 +31,6 @@ public class GameHandler {
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
         myGui.updateGUI();
         myGui.updateGUI();
-        myGui.updateGUI();
-        Scanner goon= new Scanner(System.in);
-        while (true){
-            for (int i = 0; i < players.length; i++) {
-                turn(players[i],r1,myBoard);
-                goon.nextLine();
-                myGui.updateGUI();
-            }
-        }
     }
 
     public static Player[] generateplayers(int amount) {
@@ -55,9 +46,7 @@ public class GameHandler {
         return players;
     }
 
-
-    public void turn(Player player, Rafflecup r1, Board myboard) {
-
+    public static void turn(Player player, Rafflecup r1, Board myboard) {
         //Tjekker om spilleren skal være i fængsel og frikender spilleren.
         if (player.isIsjailed()) {
             System.out.println("Du er i fængsel og er blevet sprunget over, du er fri i næste tur");
@@ -68,33 +57,38 @@ public class GameHandler {
         System.out.println("Roll the die ");
         int sum = r1.sum();
         System.out.println("du slog" + sum);
+        System.out.println("hat");
 
         //Tjek om spiller går over start
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
-        Field field = myboard.getMyFields()[player.getPosition()];
+        System.out.println("Efter if ");
+
+        Field f1 = myboard.getMyFields()[player.getPosition()];
+        System.out.println(f1);
 
         //Standard miste penge på felts værdi
-        player.move(player.getPosition() + sum);
-
+        player.setPosition(player.getPosition() + sum);
+        System.out.println(f1.getfType());
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
-        switch (field.getfType()) {
+        switch (f1.getfType()) {
             case PROPERTY:
-                if (field.getOwner() == null) {
-                    player.getAc().newBalance(-field.getPrice());
+                System.out.println("hernede");
+                if (f1.getOwner() == null) {
+                    player.getAc().newBalance(-f1.getPrice());
                     if (player.getSoldSigns() > 0) {
-                        field.setOwner(player);
+                        f1.setOwner(player);
                         System.out.println("Du er nu den stolte ejer af dette felt");
                     } else
                         System.out.println("Du har ikke flere billeter du kan derfor ikke købe denne grund");
                 } else {
-                    if (field.getOwner().equals(player)) {
+                    if (f1.getOwner().equals(player)) {
                         System.out.println("Du ejer denne grund og der sker derfor ingentin");
-                    } else
-                        System.out.println("Spiller: " + field.getOwner().getName() + " ejer denne grund du skylder derfor harm: " + field.getPrice());
-                    player.getAc().newBalance(-field.getPrice());
-                    field.getOwner().getAc().newBalance(field.getPrice());
+                    } else {
+                        System.out.println("Spiller: " + f1.getOwner().getName() + " ejer denne grund du skylder derfor harm: " + f1.getPrice());
+                        f1.getOwner().getAc().newBalance(f1.getPrice());
+                    }
                 }
                 break;
             case FREEPARKING:
@@ -103,11 +97,13 @@ public class GameHandler {
                 break;
             case GOJAIL:
                 System.out.println("Du er røget i fængsel");
-                player.move(6);
+                player.setPosition(6);
                 player.setIsjailed(true);
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 break;
         }
+
+
     }
 }
