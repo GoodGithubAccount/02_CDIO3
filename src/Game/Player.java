@@ -49,11 +49,12 @@ public class Player {
         return position;
     }
 
-    public void setPosition(int position) {
-        if (this.position + position > Settings.BOARD_SIZE) {
+    public void move(int position) {
+        if (this.position + position >= Settings.BOARD_SIZE-1) {
             this.position += position - Settings.BOARD_SIZE;
         } else this.position += position;
     }
+
 
     public boolean isIsjailed() {
         return isjailed;
@@ -77,6 +78,10 @@ public class Player {
 
     public void setSoldSigns(int soldSigns) {
         this.soldSigns = soldSigns;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 }
 
