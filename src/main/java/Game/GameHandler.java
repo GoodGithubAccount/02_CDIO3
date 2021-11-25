@@ -8,22 +8,18 @@ import java.util.Scanner;
 public class GameHandler {
 
     String[] printLinesInProgram;
-    String line1, line2, line3;
+
 
 
     public GameHandler() {
         TXTReader myTXTReader = new TXTReader("Udskrift.txt");
         String temp = myTXTReader.readTXTFile();
         printLinesInProgram = temp.split("\n");
-        line3 = printLinesInProgram[3];
     }
 
     public void startGame() throws InterruptedException {
 
 
-        System.out.println(line1);
-        System.out.print(printLinesInProgram[10]);
-        System.out.print(printLinesInProgram[10]);
 
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
@@ -54,13 +50,22 @@ public class GameHandler {
 
         do {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
-                turn(players[i], r1, myBoard);
+                Player player = players[i];
+                turn(player, r1, myBoard);
                 myGui.updateGUI();
                 myScanner2.nextLine();
                 if (!playermoney.playerloser(players))
                     break;
             }
+            if (!playermoney.playerloser(players))
+                break;
         } while (playermoney.playerloser(players));
+
+        Player win = playermoney.playerwin(players);
+        System.out.println(win.getName());
+        System.out.println(printLinesInProgram[18]);
+
+
     }
 
     public Player[] generateplayers(int amount) {
