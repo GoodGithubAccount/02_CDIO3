@@ -2,12 +2,12 @@ package Game;
 
 public class Account {
     // Our start balance and balance.
-    private final int startbal = Settings.STARTING_MONEY;
+    private final int startBalance = Settings.STARTING_MONEY;
     private int balance;
 
     // Sets balance to our startbalance
     public Account() {
-        this.balance = startbal;
+        this.balance = startBalance;
     }
 
     public int getBalance() { return balance; }
@@ -16,8 +16,6 @@ public class Account {
         this.balance = balance;
     }
 
-    // Updates the balance and also makes sure it doesn't go below 0
-    public void newBalance (int ubalance){
-        this.balance += ubalance;
-    }
+    // Updates the balance
+    public void newBalance (int newBalance){ this.balance += newBalance; }
 }
