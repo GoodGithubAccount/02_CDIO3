@@ -16,5 +16,4 @@ public class PopupBox {
     public String popup(){
         return JOptionPane.showInputDialog(null, textMessage, title, JOptionPane.INFORMATION_MESSAGE);
     }
-
 }

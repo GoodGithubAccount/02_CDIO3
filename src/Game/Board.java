@@ -32,7 +32,7 @@ public class Board {
             String[] fieldProperties = fields[i].split("-");
 
             myFields[i] = new Field(Field.fieldType.valueOf(fieldProperties[0]), fieldProperties[1],
-                    Integer.parseInt(fieldProperties[2]), fieldProperties[3]);
+                    Integer.parseInt(fieldProperties[2]), fieldProperties[3], Integer.parseInt(fieldProperties[4]));
         }
     }
 
