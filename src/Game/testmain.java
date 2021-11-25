@@ -10,16 +10,15 @@ import java.util.Scanner;
 public class testmain {
 
     public static void main(String[] args) throws InterruptedException {
-        PopupBox myPop = new PopupBox("Indtast antal spillere", "Popup");
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
         Scanner myScanner = new Scanner(System.in);
 
-        int playerAmount = myPop.popup().charAt(0) - 48;
+        int playerAmount=100;
         while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
-            System.out.print("Indtast antal spillere (Min " + Settings.MIN_PLAYERS + ", Maks " + Settings.MAX_PLAYERS + "): ");
-            playerAmount = myScanner.nextInt();
+            PopupBox myPop = new PopupBox("Indtast antal spillere", "Min 2 max 4");
+            playerAmount = myPop.popup().charAt(0) - 48;
         }
         Player[] players = generateplayers(playerAmount);
 
@@ -56,19 +55,24 @@ public class testmain {
         System.out.println("Roll the die ");
         int sum = r1.sum();
         System.out.println("du slog" + sum);
+        System.out.println("hat");
 
         //Tjek om spiller går over start
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
+        System.out.println("Efter if ");
+
         Field f1 = myboard.getMyFields()[player.getPosition()];
+        System.out.println(f1);
 
         //Standard miste penge på felts værdi
         player.setPosition(player.getPosition() + sum);
-
+        System.out.println(f1.getfType());
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (f1.getfType()) {
             case PROPERTY:
+                System.out.println("hernede");
                 if (f1.getOwner() == null) {
                     player.getAc().newBalance(-f1.getPrice());
                     if (player.getSoldSigns() > 0) {
