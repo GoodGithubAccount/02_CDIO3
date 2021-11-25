@@ -88,9 +88,9 @@ public class GUIMain extends JPanel {
 
     // Function to make gui redraw the whole board
     public void updateGUI(String text){
-        Board.removeAll();
         gameTextData = text;
-        Board.repaint();
+        Board.removeAll();
+        Board.updateUI();
     }
 
     private JPanel Board = new JPanel(){
@@ -152,7 +152,6 @@ public class GUIMain extends JPanel {
                 fieldText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 5);
 
                 Board.add(fieldText[i]);
-
             }
 
             // Game text, that needs to be sent text by some sorta function from main.
