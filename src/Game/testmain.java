@@ -30,6 +30,9 @@ public class testmain {
     }
 
     public static Player[] generateplayers(int amount) {
+        Popupbox
+
+
         Scanner myScanner = new Scanner(System.in);
 
         Player[] players = new Player[amount];
