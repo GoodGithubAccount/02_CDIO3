@@ -135,10 +135,10 @@ public class GUIMain extends JPanel {
                     g.fillRect(currentPointX, currentPointY + gridSize - gridSize/5, gridSize, gridSize / 5);
 
                     if(myFields[i].getOwner() == null){
-                        fieldOwnerText[i] = new JLabel("Unowned");
+                        fieldOwnerText[i] = new JLabel(myFields[i].getPrice() + " | " + "Unowned");
                     }
                     else{
-                        fieldOwnerText[i] = new JLabel(myFields[i].getOwner().getName());
+                        fieldOwnerText[i] = new JLabel(myFields[i].getPrice() + " | " + myFields[i].getOwner().getName());
                     }
 
                     fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 20 * 19);
