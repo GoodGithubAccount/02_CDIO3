@@ -11,15 +11,21 @@ public class Field {
     private int price;
     private Player owner;
     private String name;
+    private int pairProperty;
 
     private int[] fieldPosition;
 
-    public Field(fieldType fType, String color, int price, String name){
+    public Field(fieldType fType, String color, int price, String name, int pairProperty){
         this.fType = fType;
         this.color = color;
         this.price = price;
         this.name = name;
         this.owner = null;
+        this.pairProperty = pairProperty;
+    }
+
+    public int getPairProperty(){
+        return pairProperty;
     }
 
     public void setFieldPosition(int x, int y){
