@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class testmain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         PopupBox myPop = new PopupBox("Indtast antal spillere", "Popup");
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
@@ -28,7 +28,8 @@ public class testmain {
         myBoard.generateBoard();
 
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
-        myGui.updateGUI("Test");
+        myGui.updateGUI();
+        myGui.updateGUI();
     }
 
     public static Player[] generateplayers(int amount) {

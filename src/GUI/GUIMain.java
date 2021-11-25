@@ -87,10 +87,14 @@ public class GUIMain extends JPanel {
     }
 
     // Function to make gui redraw the whole board
-    public void updateGUI(String text){
-        gameTextData = text;
+    public void updateGUI() throws InterruptedException {
+        Thread.sleep(10);
         Board.removeAll();
         Board.updateUI();
+    }
+
+    public void setGameTextData(String text){
+        gameTextData = text;
     }
 
     private JPanel Board = new JPanel(){
