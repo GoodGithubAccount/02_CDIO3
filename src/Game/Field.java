@@ -12,7 +12,7 @@ public class Field {
     private Player owner;
     private String name;
 
-
+    private int[] fieldPosition;
 
     public Field(fieldType fType, String color, int price, String name){
         this.fType = fType;
@@ -20,6 +20,14 @@ public class Field {
         this.price = price;
         this.name = name;
         this.owner = null;
+    }
+
+    public void setFieldPosition(int x, int y){
+        fieldPosition = new int[]{x, y};
+    }
+
+    public int[] getFieldPosition(){
+        return fieldPosition;
     }
 
     // Sets the owner, e.g when someone buys the field/property

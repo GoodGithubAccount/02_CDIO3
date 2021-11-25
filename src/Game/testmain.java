@@ -80,23 +80,23 @@ public class testmain {
 
         //Standard miste penge på felts værdi
         player.setPosition(player.getPosition() + sum);
-        player.getAc().newBalance(-f1.price);
+        player.getAc().newBalance(-f1.getPrice());
 
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
-        switch (f1.fType) {
+        switch (f1.getfType()) {
             case PROPERTY:
-                if (f1.owner == null) {
+                if (f1.getOwner() == null) {
                     if (player.getSoldSigns() > 0) {
-                        f1.owner = player;
+                        f1.setOwner(player);
                         System.out.println("Du er nu den stolte ejer af dette felt");
                     } else
                         System.out.println("Du har ikke flere billeter du kan derfor ikke købe denne grund");
                 } else {
-                    if (f1.owner.equals(player)) {
+                    if (f1.getOwner().equals(player)) {
                         System.out.println("Du ejer denne grund og der sker derfor ingentin");
                     } else
-                        System.out.println("Spiller: " + f1.owner.getName() + " ejer denne grund du skylder derfor harm: " + f1.price);
-                    f1.owner.getAc().newBalance(f1.price);
+                        System.out.println("Spiller: " + f1.getOwner().getName() + " ejer denne grund du skylder derfor harm: " + f1.getPrice());
+                    f1.getOwner().getAc().newBalance(f1.getPrice());
                 }
                 break;
             case FREEPARKING:

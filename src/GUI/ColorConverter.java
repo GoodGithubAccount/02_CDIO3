@@ -27,6 +27,12 @@ public class ColorConverter {
             case "ORANGE":
                 myColor = Color.ORANGE;
                 break;
+            case "MAGENTA":
+                myColor = Color.MAGENTA;
+                break;
+            case "PINK":
+                myColor = Color.PINK;
+                break;
             default:
                 myColor = Color.WHITE;
                 break;

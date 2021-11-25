@@ -115,6 +115,7 @@ public class GUIMain extends JPanel {
                 }
 
                 g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
+                myFields[i].setFieldPosition(currentPointX, currentPointY);
 
                 if(propertyColor != Color.WHITE){
                     g.setColor(propertyColor);
@@ -127,7 +128,7 @@ public class GUIMain extends JPanel {
                         fieldOwnerText[i] = new JLabel(myFields[i].getOwner().getName());
                     }
 
-                    fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize);
+                    fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 20 * 19);
                     fieldOwnerText[i].setVerticalAlignment(SwingConstants.BOTTOM);
                     fieldOwnerText[i].setHorizontalAlignment(SwingConstants.RIGHT);
                     Board.add(fieldOwnerText[i]);
@@ -144,7 +145,9 @@ public class GUIMain extends JPanel {
             for(int c = 0; c < playerCount; c++){
                 // Player representations
                 g.setColor(playerColors[c]);
-                g.fillOval(startingPointX +playerOffsetX[c], startingPointY + playerOffsetY[c], gridSize / 5, gridSize / 5);
+                int playerPosition = myPlayers[c].getPosition();
+                int[] playerPositionCoord = myFields[playerPosition].getFieldPosition();
+                g.fillOval(playerPositionCoord[0] + playerOffsetX[c], playerPositionCoord[1] + playerOffsetY[c], gridSize / 5, gridSize / 5);
 
                 // Player text, JLabel uses html for formatting.
                 playerText[c] = new JLabel("<html>" + myPlayers[c].getName() +
