@@ -8,7 +8,7 @@ public class Popupbox {
     public Popupbox(String inpt){
         this.button.setText(inpt);
         this.frame.add(button);
-        this.frame.pack();
+        this.frame.setSize(200,200);
         this.frame.setVisible(true);
         button.addActionListener(new java.awt.event.ActionListener() {
             @Override

@@ -10,15 +10,13 @@ import java.util.Scanner;
 public class testmain {
 
     public static void main(String[] args) {
-        PopupBox myPop = new PopupBox("Test", "FUCK");
-        System.out.println(myPop.popup());
-
+        PopupBox myPop = new PopupBox("Indtast antal spillere", "Popup");
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
         Scanner myScanner = new Scanner(System.in);
 
-        int playerAmount = 0;
+        int playerAmount = myPop.popup().charAt(0)-48;
         while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS > 4) {
             System.out.print("Indtast antal spillere (Min " + Settings.MIN_PLAYERS + ", Maks " + Settings.MAX_PLAYERS + "): ");
             playerAmount = myScanner.nextInt();
@@ -34,15 +32,14 @@ public class testmain {
     }
 
     public static Player[] generateplayers(int amount) {
-        Popupbox
 
-
-        Scanner myScanner = new Scanner(System.in);
 
         Player[] players = new Player[amount];
         for (int i = 0; i < amount; i++) {
-            System.out.print("Indtast navn på spiller " + i + ": ");
-            players[i] = new Player(myScanner.nextLine());
+            PopupBox myPop = new PopupBox("Indtast navn på spiller: "+(i+1), "Popup");
+            players[i]=new Player(myPop.popup());
+
+
 
         }
         return players;
