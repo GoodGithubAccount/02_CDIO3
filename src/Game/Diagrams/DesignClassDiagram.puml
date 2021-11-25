@@ -131,7 +131,10 @@ skinparam classAttributeIconSize 0
         + readTXTFile()
     }
   }
+namespace Game {
+class Game.Playermoney
 
+}
   namespace GUI {
       class GUI.ColorConverter {
           {static} - myColor : Color
