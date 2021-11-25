@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class GameHandler {
 
-    public GameHandler(){
+    public GameHandler() {
 
     }
 
@@ -17,7 +17,7 @@ public class GameHandler {
 
         Scanner myScanner = new Scanner(System.in);
 
-        int playerAmount=100;
+        int playerAmount = 100;
         while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
             PopupBox myPop = new PopupBox("Indtast antal spillere", "Min 2 max 4");
             playerAmount = myPop.popup().charAt(0) - 48;
@@ -32,12 +32,14 @@ public class GameHandler {
         myGui.updateGUI();
         myGui.updateGUI();
         myGui.updateGUI();
-        Scanner goon= new Scanner(System.in);
-        while (true){
-            for (int i = 0; i < players.length; i++) {
-                turn(players[i],r1,myBoard);
+        Scanner goon = new Scanner(System.in);
+        while (true) {
+            for (Player player : players) {
+                turn(player, r1, myBoard);
                 goon.nextLine();
                 myGui.updateGUI();
+                if (playermoney.playerloser(players))
+                    break;
             }
         }
     }
@@ -57,6 +59,7 @@ public class GameHandler {
 
 
     public void turn(Player player, Rafflecup r1, Board myboard) {
+        System.out.println("Det er din tur: "+player.getName());
 
         //Tjekker om spilleren skal være i fængsel og frikender spilleren.
         if (player.isIsjailed()) {
@@ -69,14 +72,16 @@ public class GameHandler {
         int sum = r1.sum();
         System.out.println("du slog" + sum);
 
+        player.move(player.getPosition() + sum);
         //Tjek om spiller går over start
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
         Field field = myboard.getMyFields()[player.getPosition()];
+        System.out.println("Du landende på: " + field.getName() + " Med felttypen" + field.getfType());
+        System.out.println("Du har positionen: "+player.getPosition());
 
         //Standard miste penge på felts værdi
-        player.move(player.getPosition() + sum);
 
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (field.getfType()) {
