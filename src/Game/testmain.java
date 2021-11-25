@@ -9,15 +9,15 @@ import java.util.Scanner;
 
 public class testmain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         PopupBox myPop = new PopupBox("Indtast antal spillere", "Popup");
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
         Scanner myScanner = new Scanner(System.in);
 
-        int playerAmount = myPop.popup().charAt(0)-48;
-        while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS > 4) {
+        int playerAmount = myPop.popup().charAt(0) - 48;
+        while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
             System.out.print("Indtast antal spillere (Min " + Settings.MIN_PLAYERS + ", Maks " + Settings.MAX_PLAYERS + "): ");
             playerAmount = myScanner.nextInt();
         }
@@ -28,7 +28,8 @@ public class testmain {
         myBoard.generateBoard();
 
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
-        myGui.updateGUI("Test");
+        myGui.updateGUI();
+        myGui.updateGUI();
     }
 
     public static Player[] generateplayers(int amount) {
@@ -36,9 +37,8 @@ public class testmain {
 
         Player[] players = new Player[amount];
         for (int i = 0; i < amount; i++) {
-            PopupBox myPop = new PopupBox("Indtast navn på spiller: "+(i+1), "Popup");
-            players[i]=new Player(myPop.popup());
-
+            PopupBox myPop = new PopupBox("Indtast navn på spiller: " + (i + 1), "Popup");
+            players[i] = new Player(myPop.popup());
 
 
         }
@@ -65,12 +65,12 @@ public class testmain {
 
         //Standard miste penge på felts værdi
         player.setPosition(player.getPosition() + sum);
-        player.getAc().newBalance(-f1.getPrice());
 
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (f1.getfType()) {
             case PROPERTY:
                 if (f1.getOwner() == null) {
+                    player.getAc().newBalance(-f1.getPrice());
                     if (player.getSoldSigns() > 0) {
                         f1.setOwner(player);
                         System.out.println("Du er nu den stolte ejer af dette felt");
@@ -79,9 +79,10 @@ public class testmain {
                 } else {
                     if (f1.getOwner().equals(player)) {
                         System.out.println("Du ejer denne grund og der sker derfor ingentin");
-                    } else
+                    } else {
                         System.out.println("Spiller: " + f1.getOwner().getName() + " ejer denne grund du skylder derfor harm: " + f1.getPrice());
-                    f1.getOwner().getAc().newBalance(f1.getPrice());
+                        f1.getOwner().getAc().newBalance(f1.getPrice());
+                    }
                 }
                 break;
             case FREEPARKING:

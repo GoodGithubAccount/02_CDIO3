@@ -10,7 +10,7 @@ public class GameHandler {
 
     }
 
-    public void startGame(){
+    public void startGame() throws InterruptedException {
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
@@ -28,7 +28,7 @@ public class GameHandler {
         myBoard.generateBoard();
 
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
-        myGui.updateGUI("Test");
+        myGui.updateGUI();
     }
 
     public Player[] generateplayers(int amount) {
