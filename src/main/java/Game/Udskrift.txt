@@ -1,2 +1,18 @@
-Du har lavet dine lektier modtag 2 dollars.
-Et andet kort.
+Indtast antal spillere
+Min 2 max 4
+Det er spillers tur
+Indtast navn på spiller:
+Popup
+Det er din tur:
+Du er i fængsel og er blevet sprunget over, du er fri i næste tur
+Slå med terningen
+Du slog
+Du landende på:
+ med felttypen:
+Du har positionen:
+Du er nu den stolte ejer af dette felt
+Du har ikke flere billeter du kan derfor ikke købe denne grund
+Du ejer denne grund og der sker derfor ingenting
+Spiller:
+ ejer denne grund du skylder derfor harm:
+Du er røget i fængsel

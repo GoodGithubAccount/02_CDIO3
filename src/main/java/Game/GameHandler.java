@@ -73,7 +73,7 @@ public class GameHandler {
         //Slag
         System.out.println("Roll the die ");
         int sum = r1.sum();
-        System.out.println("du slog" + sum);
+        System.out.println("du slog " + sum);
 
         player.setPosition((player.getPosition() + sum)%23);
         //Tjek om spiller går over start
@@ -81,7 +81,7 @@ public class GameHandler {
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
         Field field = myboard.getMyFields()[player.getPosition()];
-        System.out.println("Du landende på: " + field.getName() + " Med felttypen: " + field.getfType());
+        System.out.println("Du landende på: " + field.getName() + " med felttypen: " + field.getfType());
         System.out.println("Du har positionen: "+player.getPosition());
 
         //Standard miste penge på felts værdi
