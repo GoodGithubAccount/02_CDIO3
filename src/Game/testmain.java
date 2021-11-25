@@ -11,33 +11,31 @@ public class testmain {
     public static void main(String[] args) {
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
-        Scanner playeramount = new Scanner(System.in);
-        Player[] players = new Player[0];
-        int amountPlayer;
-        while (true) {
-            System.out.println("Hvor mange spillere er i man kan spille mellem 2 og 4 spillere");
-            amountPlayer = playeramount.nextInt();
 
-            if (amountPlayer >= 2 && amountPlayer <= 4)
-                players = generateplayers(amountPlayer);
-            break;
+        Scanner myScanner = new Scanner(System.in);
+
+        int playerAmount = 0;
+        while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS > 4) {
+            System.out.print("Indtast antal spillere (Min " + Settings.MIN_PLAYERS + ", Maks " + Settings.MAX_PLAYERS + "): ");
+            playerAmount = myScanner.nextInt();
         }
+        Player[] players = generateplayers(playerAmount);
 
-        // Generates the play board. 
+        // Generates the play board.
         Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
         myBoard.generateBoard();
 
-        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, amountPlayer);
-        myGui.updateGUI();
+        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
+        myGui.updateGUI("Test");
     }
 
     public static Player[] generateplayers(int amount) {
-        Scanner playername = new Scanner(System.in);
+        Scanner myScanner = new Scanner(System.in);
 
         Player[] players = new Player[amount];
         for (int i = 0; i < amount; i++) {
-            System.out.println("Indtast navn på spiller: " + i);
-            players[i] = new Player(playername.nextLine());
+            System.out.print("Indtast navn på spiller " + i + ": ");
+            players[i] = new Player(myScanner.nextLine());
 
         }
         return players;

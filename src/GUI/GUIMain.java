@@ -37,11 +37,18 @@ public class GUIMain extends JPanel {
     private int[] playerOffsetX;
     private int[] playerOffsetY;
 
+    // Game text
+    private JLabel gameText;
+    private String gameTextData;
+
     public GUIMain(int width, int height, int gridCount, Field[] myFields, Player[] myPlayers, int playerCount){
         // Field data
         this.myFields = myFields;
         this.fieldText = new JLabel[gridCount];
         this.fieldOwnerText = new JLabel[gridCount];
+
+        // Temporary game text
+        this.gameTextData = "New Game";
 
         // Player data
         this.myPlayers = myPlayers;
@@ -80,8 +87,9 @@ public class GUIMain extends JPanel {
     }
 
     // Function to make gui redraw the whole board
-    public void updateGUI(){
+    public void updateGUI(String text){
         Board.removeAll();
+        gameTextData = text;
         Board.repaint();
     }
 
@@ -146,6 +154,11 @@ public class GUIMain extends JPanel {
                 Board.add(fieldText[i]);
 
             }
+
+            // Game text, that needs to be sent text by some sorta function from main.
+            gameText = new JLabel(gameTextData);
+            gameText.setBounds(startingPointX, startingPointY + gridSize * 4, gridSize * 5, gridSize);
+            Board.add(gameText);
 
             for(int c = 0; c < playerCount; c++){
                 // Player representations

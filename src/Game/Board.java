@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Board {
 
-    int boardSize;
+    private int boardSize;
 
-    String fieldDatabase;
-    String chanceDatabase;
-    Field[] myFields;
-    Chance[] myChance;
+    private String fieldDatabase;
+    private String chanceDatabase;
+    private Field[] myFields;
+    private Chance[] myChance;
 
     public Board(String fieldDatabase, String chanceDatabase, int boardSize) {
         this.fieldDatabase = fieldDatabase;
