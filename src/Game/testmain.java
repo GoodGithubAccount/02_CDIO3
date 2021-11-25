@@ -13,12 +13,13 @@ public class testmain {
         r1.rollar();
         Scanner playeramount = new Scanner(System.in);
         Player[] players = new Player[0];
+        int amountPlayer;
         while (true) {
             System.out.println("Hvor mange spillere er i man kan spille mellem 2 og 4 spillere");
-            int amountplaYER = playeramount.nextInt();
+            amountPlayer = playeramount.nextInt();
 
-            if (amountplaYER >= 2 && amountplaYER <= 4)
-                players = generateplayers(amountplaYER);
+            if (amountPlayer >= 2 && amountPlayer <= 4)
+                players = generateplayers(amountPlayer);
             break;
         }
 
@@ -36,8 +37,14 @@ public class testmain {
             System.out.println("NUMBER " + i + ": " + myFields[i].getfType() + myFields[i].getColor() + myFields[i].getPrice() + myFields[i].getName());
         }
 
-
-        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24, myFields);
+        GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, 24, myFields, players, amountPlayer);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        players[1].getAc().newBalance(200);
+        myGui.updateGUI();
     }
 
     public static Player[] generateplayers(int amount) {

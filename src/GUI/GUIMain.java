@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import Game.Field;
+import Game.Player;
 
 public class GUIMain extends JPanel {
 
@@ -14,7 +15,7 @@ public class GUIMain extends JPanel {
 
     private int gridSize;
     private int gridCount;
-    int gridCountLine;
+    private int gridCountLine;
 
     private int startingPointX;
     private int startingPointY;
@@ -23,15 +24,31 @@ public class GUIMain extends JPanel {
     private JLabel[] fieldText;
     private JLabel[] fieldOwnerText;
 
-    public GUIMain(int width, int height, int gridCount, Field[] myFields){
+    private JLabel[] playerText;
+
+    private int playerCount;
+    private Player[] myPlayers;
+    private Color[] playerColors;
+
+    private int[] playerOffsetX;
+    private int[] playerOffsetY;
+
+    public GUIMain(int width, int height, int gridCount, Field[] myFields, Player[] myPlayers, int playerCount){
+        // Field data
         this.myFields = myFields;
         this.fieldText = new JLabel[gridCount];
         this.fieldOwnerText = new JLabel[gridCount];
+
+        // Player data
+        this.myPlayers = myPlayers;
+        this.playerText = new JLabel[playerCount];
+        this.playerCount = playerCount;
 
         // Width of the panel in pixels
         this.width = width;
         this.height = height;
 
+        // Calculating GUI limiting factor
         if(width > height) limitingFactor = height;
         else limitingFactor = width;
 
@@ -39,6 +56,10 @@ public class GUIMain extends JPanel {
         this.gridCount = gridCount;
         gridCountLine = (gridCount / 4) + 1;
         gridSize = limitingFactor / (gridCountLine + 1);
+
+        playerOffsetX = new int[]{(gridSize / 4), (gridSize / 4 * 2), (gridSize / 4), (gridSize / 4 * 2)};
+        playerOffsetY = new int[]{(gridSize / 4), (gridSize / 4), (gridSize / 4 * 2), (gridSize / 4 * 2)};
+        playerColors = new Color[]{Color.BLUE, Color.RED, Color.GREEN, Color.YELLOW};
 
         // Gets the starting points according to the width of the screen, the amount of grids, and the amount of grids per line.
         // Done to center the board. Not perfect, but good enough.
@@ -54,6 +75,11 @@ public class GUIMain extends JPanel {
         frame.setVisible(true);
     }
 
+    public void updateGUI(){
+        Board.removeAll();
+        Board.updateUI();
+    }
+
     private JPanel Board = new JPanel(){
         @Override
         protected void paintComponent(Graphics g) {
@@ -64,8 +90,6 @@ public class GUIMain extends JPanel {
 
             String test = "GRAY";
             Color fieldColor = Color.GRAY;
-
-            for(int c = 0; c < playerCount)
 
             for(int i = 0; i < gridCount; i++){
                 g.setColor(fieldColor);
@@ -97,22 +121,36 @@ public class GUIMain extends JPanel {
                     g.fillRect(currentPointX, currentPointY + gridSize - gridSize/5, gridSize, gridSize / 5);
 
                     if(myFields[i].getOwner() == null){
-                        fieldOwnerText[i] = new JLabel("Test");
-                                //new JLabel(myFields[i].getOwner().getName());
-                        fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize);
-                        fieldOwnerText[i].setVerticalAlignment(SwingConstants.BOTTOM);
-                        fieldOwnerText[i].setHorizontalAlignment(SwingConstants.RIGHT);
-                        Board.add(fieldOwnerText[i]);
+                        fieldOwnerText[i] = new JLabel("Unowned");
                     }
+                    else{
+                        fieldOwnerText[i] = new JLabel(myFields[i].getOwner().getName());
+                    }
+
+                    fieldOwnerText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize);
+                    fieldOwnerText[i].setVerticalAlignment(SwingConstants.BOTTOM);
+                    fieldOwnerText[i].setHorizontalAlignment(SwingConstants.RIGHT);
+                    Board.add(fieldOwnerText[i]);
                 }
 
                 fieldText[i] = new JLabel(myFields[i].getName());
                 fieldText[i].setHorizontalAlignment(SwingConstants.CENTER);
                 fieldText[i].setBounds(currentPointX, currentPointY, gridSize, gridSize / 5);
 
-
-
                 Board.add(fieldText[i]);
+
+            }
+
+            for(int c = 0; c < playerCount; c++){
+                // Player representations
+                g.setColor(playerColors[c]);
+                g.fillOval(startingPointX +playerOffsetX[c], startingPointY + playerOffsetY[c], gridSize / 5, gridSize / 5);
+
+                // Player text, JLabel uses html for formatting.
+                playerText[c] = new JLabel("<html>" + myPlayers[c].getName() +
+                        "<br/>Money: " + myPlayers[c].getAc().getBalance() + "</html>");
+                playerText[c].setBounds(startingPointX + gridSize * (c + 1), startingPointY + gridSize, gridSize, gridSize);
+                Board.add(playerText[c]);
             }
         }
 

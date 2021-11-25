@@ -6,11 +6,13 @@ public class Field {
         PROPERTY, GOJAIL, JAIL, CHANCE, FREEPARKING, START
     }
 
-    fieldType fType;
-    String color;
-    int price;
-    Player owner;
-    String name;
+    private fieldType fType;
+    private String color;
+    private int price;
+    private Player owner;
+    private String name;
+
+
 
     public Field(fieldType fType, String color, int price, String name){
         this.fType = fType;
