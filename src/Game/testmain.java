@@ -34,7 +34,7 @@ public class testmain {
     }
 
     public static Player[] generateplayers(int amount) {
-        Popupbox
+        //Popupbox
 
 
         Scanner myScanner = new Scanner(System.in);
