@@ -34,13 +34,16 @@ public class GameHandler {
         myGui.updateGUI();
         Scanner goon = new Scanner(System.in);
         while (true) {
-            for (Player player : players) {
-                turn(player, r1, myBoard);
+            for (int i = 0, playersLength = players.length; i < playersLength; i++) {
+                System.out.println("Det er spillers tur: "+i);
+                turn(players[i], r1, myBoard);
                 goon.nextLine();
                 myGui.updateGUI();
-                if (playermoney.playerloser(players))
+                if (!playermoney.playerloser(players))
                     break;
             }
+            if (!playermoney.playerloser(players))
+                break;
         }
     }
 
@@ -72,13 +75,13 @@ public class GameHandler {
         int sum = r1.sum();
         System.out.println("du slog" + sum);
 
-        player.move(player.getPosition() + sum);
+        player.setPosition((player.getPosition() + sum)%23);
         //Tjek om spiller går over start
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
         Field field = myboard.getMyFields()[player.getPosition()];
-        System.out.println("Du landende på: " + field.getName() + " Med felttypen" + field.getfType());
+        System.out.println("Du landende på: " + field.getName() + " Med felttypen: " + field.getfType());
         System.out.println("Du har positionen: "+player.getPosition());
 
         //Standard miste penge på felts værdi
@@ -108,7 +111,7 @@ public class GameHandler {
                 break;
             case GOJAIL:
                 System.out.println("Du er røget i fængsel");
-                player.move(6);
+                player.setPosition(6);
                 player.setIsjailed(true);
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
