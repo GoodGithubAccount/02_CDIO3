@@ -132,8 +132,9 @@ skinparam classAttributeIconSize 0
     }
   }
 namespace Game {
-class Game.Playermoney
-
+class Game.Playermoney {
+ {static} + int : winner
+}
 }
   namespace GUI {
       class GUI.ColorConverter {

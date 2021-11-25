@@ -61,7 +61,7 @@ public class ChanceTest {
         cardType cType=cardType.GIVEPLAYERCARD;
 
         switch (cType){
-                //The player who draws this car has to give the card to a specified player and then draw another card.
+                //The player who draws this card has to give the card to a specified player and then draw another card.
             case GIVEPLAYERCARD:
                 playerNumber();
 

@@ -48,23 +48,17 @@ public class GameHandler {
         Scanner myScanner2 = new Scanner(System.in);
 
 
-        do {
+        do{
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
                 Player player = players[i];
                 turn(player, r1, myBoard);
                 myGui.updateGUI();
                 myScanner2.nextLine();
-                if (!playermoney.playerloser(players))
-                    break;
             }
-            if (!playermoney.playerloser(players))
-                break;
-        } while (playermoney.playerloser(players));
-
+        }while(!playermoney.playerloser(players));
         Player win = playermoney.playerwin(players);
         System.out.println(win.getName());
         System.out.println(printLinesInProgram[18]);
-
 
     }
 
@@ -149,6 +143,10 @@ public class GameHandler {
                 player.setIsjailed(true);
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
+                Chancekort chancekorttest = new Chancekort();
+                Chancekort.ChancekortTypes tilfældigtChancekort = chancekorttest.DrawRandomChanceCard();
+                chancekorttest.chancekorthandling(tilfældigtChancekort, myboard, player);
+
                 break;
         }
     }

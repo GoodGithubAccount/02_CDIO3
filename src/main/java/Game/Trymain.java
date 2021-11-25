@@ -1,8 +1,5 @@
 package Game;
 
-import Game.Board;
-import Game.Settings;
-
 public class Trymain {
     public static void main(String[]args){
         /*
@@ -11,6 +8,10 @@ public class Trymain {
         System.out.println();
          */
 
+        Chancekort chancekort = new Chancekort();
+        for (int i = 0; i < 100; i++) {
+            System.out.println(chancekort.DrawRandomChanceCard());
+        }
 
     }
 }

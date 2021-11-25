@@ -27,9 +27,9 @@ public class playermoney {
     public static boolean playerloser(Player[] loser) {
 
         for (int i = 0; i < loser.length; i++) {
-            if (loser[i].getAc().getBalance() <= 0) ;
-            return true;
-
+            if(loser[i].getAc().getBalance() <= 0){
+                return true;
+            }
         }
         return false;
 

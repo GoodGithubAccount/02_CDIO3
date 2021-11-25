@@ -8,8 +8,8 @@ public class Player {
     private int playerNumber;
 
     private int position = 0;
-    private boolean isjailed=false;
-    private int soldSigns=Settings.SOLD_SIGNS;
+    private boolean isjailed = false;
+    private int soldSigns = Settings.SOLD_SIGNS;
 
     public Player(String name) {
         this.name = name;
@@ -50,7 +50,7 @@ public class Player {
     }
 
     public void move(int position) {
-        if (this.position + position >= Settings.BOARD_SIZE-1) {
+        if (this.position + position >= Settings.BOARD_SIZE - 1) {
             this.position += position - Settings.BOARD_SIZE;
         } else this.position += position;
     }
