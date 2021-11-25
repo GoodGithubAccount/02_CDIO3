@@ -37,8 +37,8 @@ public class GameHandler {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
                 System.out.println("Det er spillers tur: "+i);
                 turn(players[i], r1, myBoard);
-                goon.nextLine();
                 myGui.updateGUI();
+                goon.nextLine();
                 if (!playermoney.playerloser(players))
                     break;
             }
