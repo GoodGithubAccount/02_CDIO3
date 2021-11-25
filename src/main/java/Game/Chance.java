@@ -2,8 +2,8 @@ package Game;
 
 public class Chance {
 
-    public enum cardType{
-        GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANGEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
+    public enum cardType {
+        GIVEPLAYERCARD, MOVETOSPACE, MOVECERTAINDISTANCE, CHOISE, CHANGEBALANCE, GETOUTOFJAIL, RECEIVEMONEYFROMPLAYERS
     }
 
     private cardType cType;
@@ -18,9 +18,9 @@ public class Chance {
     public Chance(String name, String text, int id, String value, int move, cardType cType) {
         this.name = name;
         this.id = id;
-        this.text=text;
-        this.cType=cType;
-        this.move=move;
+        this.text = text;
+        this.cType = cType;
+        this.move = move;
         this.value = value;
     }
 
@@ -33,17 +33,25 @@ public class Chance {
         return id;
     }
 
-    public String getText() {return text;}
+    public String getText() {
+        return text;
+    }
 
-    public cardType getCType(){return cType;}
+    public cardType getCType() {
+        return cType;
+    }
 
-    public String getValue(){return value;}
+    public String getValue() {
+        return value;
+    }
 
-    public int getMove(){return move;}
+    public int getMove() {
+        return move;
+    }
 
 
-    public String toString(){
-        return this.name+" "+this.text;
+    public String toString() {
+        return this.name + " " + this.text;
 
     }
 }

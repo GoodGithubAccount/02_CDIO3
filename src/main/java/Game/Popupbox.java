@@ -3,12 +3,13 @@ package Game;
 import javax.swing.*;
 
 public class Popupbox {
-    JFrame frame= new JFrame();
+    JFrame frame = new JFrame();
     JButton button = new JButton();
-    public Popupbox(String inpt){
+
+    public Popupbox(String inpt) {
         this.button.setText(inpt);
         this.frame.add(button);
-        this.frame.setSize(200,200);
+        this.frame.setSize(200, 200);
         this.frame.setVisible(true);
         button.addActionListener(new java.awt.event.ActionListener() {
             @Override

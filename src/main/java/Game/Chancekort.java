@@ -44,7 +44,7 @@ public class Chancekort {
                 player.getAc().setBalance(y + 2);
 
                 break;
-// Burde få skatepark gratis, men er ikke implementeret.
+            // Skatepark field should originally be free, however it is not implemented.
             case MoveToSkatepark:
                 player.setPosition(10);
 

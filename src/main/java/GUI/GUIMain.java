@@ -41,7 +41,7 @@ public class GUIMain extends JPanel {
     private JLabel gameText;
     private String gameTextData;
 
-    public GUIMain(int width, int height, int gridCount, Field[] myFields, Player[] myPlayers, int playerCount){
+    public GUIMain(int width, int height, int gridCount, Field[] myFields, Player[] myPlayers, int playerCount) {
         // Field data
         this.myFields = myFields;
         this.fieldText = new JLabel[gridCount];
@@ -60,7 +60,7 @@ public class GUIMain extends JPanel {
         this.height = height;
 
         // Calculating GUI limiting factor
-        if(width > height) limitingFactor = height;
+        if (width > height) limitingFactor = height;
         else limitingFactor = width;
 
         // Sets the grid size according to the amount of grids and the screen size. Uses the limiting factor i.e the smallest of the two dimensions.
@@ -74,8 +74,8 @@ public class GUIMain extends JPanel {
 
         // Gets the starting points according to the width of the screen, the amount of grids, and the amount of grids per line.
         // Done to center the board. Not perfect, but good enough.
-        startingPointX = (int)Math.round((width / 2) - (gridSize * (gridCountLine / 2)));
-        startingPointY = (int)Math.round((height / 2) - (gridSize * (gridCountLine / 2))) - 50;
+        startingPointX = (int) Math.round((width / 2) - (gridSize * (gridCountLine / 2)));
+        startingPointY = (int) Math.round((height / 2) - (gridSize * (gridCountLine / 2))) - 50;
 
         JFrame frame = new JFrame("Good Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -93,11 +93,11 @@ public class GUIMain extends JPanel {
         Board.updateUI();
     }
 
-    public void setGameTextData(String text){
+    public void setGameTextData(String text) {
         gameTextData = text;
     }
 
-    private JPanel Board = new JPanel(){
+    private JPanel Board = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -108,40 +108,35 @@ public class GUIMain extends JPanel {
             String test = "GRAY";
             Color fieldColor = Color.GRAY;
 
-            for(int i = 0; i < gridCount; i++){
+            for (int i = 0; i < gridCount; i++) {
                 g.setColor(fieldColor);
-                if(fieldColor == Color.GRAY) fieldColor = Color.LIGHT_GRAY;
+                if (fieldColor == Color.GRAY) fieldColor = Color.LIGHT_GRAY;
                 else fieldColor = Color.GRAY;
 
                 Color propertyColor = ColorConverter.ConvertColor(myFields[i].getColor());
 
-                if(i == 0){
+                if (i == 0) {
                     // Do nothing
-                }
-                else if(i >= gridCountLine * 3 - 3) {
+                } else if (i >= gridCountLine * 3 - 3) {
                     currentPointY -= gridSize;
-                }
-                else if(i >= gridCountLine * 2 - 2){
+                } else if (i >= gridCountLine * 2 - 2) {
                     currentPointX -= gridSize;
-                }
-                else if(i >= gridCountLine - 1){
+                } else if (i >= gridCountLine - 1) {
                     currentPointY += gridSize;
-                }
-                else{
+                } else {
                     currentPointX += gridSize;
                 }
 
                 g.fillRect(currentPointX, currentPointY, gridSize, gridSize);
                 myFields[i].setFieldPosition(currentPointX, currentPointY);
 
-                if(propertyColor != Color.WHITE){
+                if (propertyColor != Color.WHITE) {
                     g.setColor(propertyColor);
-                    g.fillRect(currentPointX, currentPointY + gridSize - gridSize/5, gridSize, gridSize / 5);
+                    g.fillRect(currentPointX, currentPointY + gridSize - gridSize / 5, gridSize, gridSize / 5);
 
-                    if(myFields[i].getOwner() == null){
+                    if (myFields[i].getOwner() == null) {
                         fieldOwnerText[i] = new JLabel(myFields[i].getPrice() + " | " + "Unowned");
-                    }
-                    else{
+                    } else {
                         fieldOwnerText[i] = new JLabel(myFields[i].getPrice() + " | " + myFields[i].getOwner().getName());
                     }
 
@@ -163,7 +158,7 @@ public class GUIMain extends JPanel {
             gameText.setBounds(startingPointX, startingPointY + gridSize * 4, gridSize * 5, gridSize);
             Board.add(gameText);
 
-            for(int c = 0; c < playerCount; c++){
+            for (int c = 0; c < playerCount; c++) {
                 // Player representations
                 g.setColor(playerColors[c]);
                 int playerPosition = myPlayers[c].getPosition();

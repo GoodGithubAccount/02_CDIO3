@@ -10,7 +10,6 @@ public class GameHandler {
     String[] printLinesInProgram;
 
 
-
     public GameHandler() {
         TXTReader myTXTReader = new TXTReader("Udskrift.txt");
         String temp = myTXTReader.readTXTFile();
@@ -18,7 +17,6 @@ public class GameHandler {
     }
 
     public void startGame() throws InterruptedException {
-
 
 
         Rafflecup r1 = new Rafflecup(1, 6);
@@ -48,14 +46,14 @@ public class GameHandler {
         Scanner myScanner2 = new Scanner(System.in);
 
 
-        do{
+        do {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
                 Player player = players[i];
                 turn(player, r1, myBoard);
                 myGui.updateGUI();
                 myScanner2.nextLine();
             }
-        }while(!playermoney.playerloser(players));
+        } while (!playermoney.playerloser(players));
         Player win = playermoney.playerwin(players);
         System.out.println(win.getName());
         System.out.println(printLinesInProgram[18]);

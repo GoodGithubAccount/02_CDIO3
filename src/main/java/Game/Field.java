@@ -2,7 +2,7 @@ package Game;
 
 public class Field {
 
-    public enum fieldType{
+    public enum fieldType {
         PROPERTY, GOJAIL, JAIL, CHANCE, FREEPARKING, START
     }
 
@@ -15,7 +15,7 @@ public class Field {
 
     private int[] fieldPosition;
 
-    public Field(fieldType fType, String color, int price, String name, int pairProperty){
+    public Field(fieldType fType, String color, int price, String name, int pairProperty) {
         this.fType = fType;
         this.color = color;
         this.price = price;
@@ -24,15 +24,15 @@ public class Field {
         this.pairProperty = pairProperty;
     }
 
-    public int getPairProperty(){
+    public int getPairProperty() {
         return pairProperty;
     }
 
-    public void setFieldPosition(int x, int y){
+    public void setFieldPosition(int x, int y) {
         fieldPosition = new int[]{x, y};
     }
 
-    public int[] getFieldPosition(){
+    public int[] getFieldPosition() {
         return fieldPosition;
     }
 
@@ -58,10 +58,12 @@ public class Field {
         return name;
     }
 
-    public fieldType getfType() { return fType; }
+    public fieldType getfType() {
+        return fType;
+    }
 
-    public String toString(){
-        return this.name+" "+this.price;
+    public String toString() {
+        return this.name + " " + this.price;
 
     }
 }

@@ -10,12 +10,16 @@ public class Account {
         this.balance = startBalance;
     }
 
-    public int getBalance() { return balance; }
+    public int getBalance() {
+        return balance;
+    }
 
     public void setBalance(int balance) {
         this.balance = balance;
     }
 
     // Updates the balance
-    public void newBalance (int newBalance){ this.balance += newBalance; }
+    public void newBalance(int newBalance) {
+        this.balance += newBalance;
+    }
 }

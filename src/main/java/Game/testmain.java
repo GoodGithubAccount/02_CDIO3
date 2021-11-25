@@ -10,15 +10,15 @@ import java.util.Scanner;
 public class testmain {
 
     public static void main(String[] args) throws InterruptedException {
-        TXTReader myTXTReader =new TXTReader("Udskrift.txt");
-        String temp=myTXTReader.readTXTFile();
-        String[] udskrifter=temp.split("\n");
+        TXTReader myTXTReader = new TXTReader("Udskrift.txt");
+        String temp = myTXTReader.readTXTFile();
+        String[] udskrifter = temp.split("\n");
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
 
         Scanner myScanner = new Scanner(System.in);
 
-        int playerAmount=100;
+        int playerAmount = 100;
         while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
             PopupBox myPop = new PopupBox(udskrifter[0], "Min 2 max 4");
             playerAmount = myPop.popup().charAt(0) - 48;

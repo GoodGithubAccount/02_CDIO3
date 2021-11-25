@@ -30,7 +30,7 @@ public class Rafflecup {
     }
 
 
-    public void rollar(){
+    public void rollar() {
         for (int i = 0; i < cup.length; i++) {
             cup[i].roll();
         }

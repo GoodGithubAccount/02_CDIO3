@@ -6,9 +6,9 @@ public class ColorConverter {
 
     private static Color myColor = Color.WHITE;
 
-    public static Color ConvertColor(String sColor){
+    public static Color ConvertColor(String sColor) {
 
-        switch(sColor.toUpperCase()) {
+        switch (sColor.toUpperCase()) {
             case "YELLOW":
                 myColor = Color.YELLOW;
                 break;
@@ -36,8 +36,9 @@ public class ColorConverter {
             default:
                 myColor = Color.WHITE;
                 break;
-        };
-        
+        }
+        ;
+
         return myColor;
     }
 }
