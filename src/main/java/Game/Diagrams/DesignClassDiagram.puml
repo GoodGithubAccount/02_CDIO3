@@ -169,5 +169,8 @@ Game.fieldtype --|> "1" Game.Field
 Game.Settings ---> GUI.GUIMain
 Game.Chance --|> Game.fieldtype
 Game.TXTReader --o Game.Board
+Game.Rafflecup <--- Game.Board
+
+
 
 @enduml
