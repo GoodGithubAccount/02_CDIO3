@@ -2,11 +2,10 @@ package Game;
 
 public class ChanceTest {
 
-
-
     public static enum cardType{
         GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANGEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
     }
+
     //Method to GIVEPLAYERCARD
     private int playerNumber;
     public int playerNumber(){
