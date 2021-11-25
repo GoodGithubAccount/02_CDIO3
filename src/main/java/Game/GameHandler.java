@@ -8,14 +8,14 @@ import java.util.Scanner;
 public class GameHandler {
 
     String[] printLinesInProgram;
-    String line1,line2,line3;
+    String line1, line2, line3;
 
 
     public GameHandler() {
         TXTReader myTXTReader = new TXTReader("Udskrift.txt");
         String temp = myTXTReader.readTXTFile();
         printLinesInProgram = temp.split("\n");
-         line3= printLinesInProgram[3];
+        line3 = printLinesInProgram[3];
     }
 
     public void startGame() throws InterruptedException {
@@ -32,8 +32,6 @@ public class GameHandler {
         System.out.println(printLinesInProgram[9]);
         System.out.println("Linje 9");
         System.out.print(printLinesInProgram[10]);
-
-
 
 
         int playerAmount = 100;
@@ -104,7 +102,7 @@ public class GameHandler {
 
 
         System.out.println(printLinesInProgram[9]);
-        System.out.println(field.toString());
+        System.out.println(field.getName());
         System.out.println(printLinesInProgram[10]);
         System.out.println(field.getfType());
         System.out.println(printLinesInProgram[11]);
@@ -124,10 +122,16 @@ public class GameHandler {
                 } else {
                     if (field.getOwner().equals(player)) {
                         System.out.println(printLinesInProgram[14]);
-                    } else
-                        System.out.println(printLinesInProgram[15] + field.getOwner().getName() + printLinesInProgram[16] + field.getPrice());
-                    player.getAc().newBalance(-field.getPrice());
-                    field.getOwner().getAc().newBalance(field.getPrice());
+                    } else {
+                        System.out.println(printLinesInProgram[15]);
+                        System.out.println(field.getOwner().getName());
+                        System.out.println(printLinesInProgram[16]);
+                        System.out.println(field.getPrice());
+                        player.getAc().newBalance(-field.getPrice());
+                        field.getOwner().getAc().newBalance(field.getPrice());
+
+                    }
+
                 }
                 break;
             case FREEPARKING:
