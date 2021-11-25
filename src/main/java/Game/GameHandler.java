@@ -6,8 +6,13 @@ import GUI.PopupBox;
 import java.util.Scanner;
 
 public class GameHandler {
+    String[] printLinesInProgram;
+
 
     public GameHandler() {
+        TXTReader myTXTReader = new TXTReader("Udskrift.txt");
+        String temp = myTXTReader.readTXTFile();
+        printLinesInProgram = temp.split("\n");
 
     }
 
@@ -35,7 +40,7 @@ public class GameHandler {
         Scanner goon = new Scanner(System.in);
         while (true) {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
-                System.out.println("Det er spillers tur: "+i);
+                System.out.println("Det er spillers tur: " + i);
                 turn(players[i], r1, myBoard);
                 myGui.updateGUI();
                 goon.nextLine();
@@ -62,7 +67,7 @@ public class GameHandler {
 
 
     public void turn(Player player, Rafflecup r1, Board myboard) {
-        System.out.println("Det er din tur: "+player.getName());
+        System.out.println("Det er din tur: " + player.getName());
 
         //Tjekker om spilleren skal være i fængsel og frikender spilleren.
         if (player.isIsjailed()) {
@@ -73,16 +78,16 @@ public class GameHandler {
         //Slag
         System.out.println("Roll the die ");
         int sum = r1.sum();
-        System.out.println("du slog " + sum);
+        System.out.println("du slog" + sum);
 
-        player.setPosition((player.getPosition() + sum)%23);
+        player.setPosition((player.getPosition() + sum) % 23);
         //Tjek om spiller går over start
         if (player.getPosition() > Settings.BOARD_SIZE - 1)
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
 
         Field field = myboard.getMyFields()[player.getPosition()];
-        System.out.println("Du landende på: " + field.getName() + " med felttypen: " + field.getfType());
-        System.out.println("Du har positionen: "+player.getPosition());
+        System.out.println("Du landende på: " + field.getName() + " Med felttypen: " + field.getfType());
+        System.out.println("Du har positionen: " + player.getPosition());
 
         //Standard miste penge på felts værdi
 
