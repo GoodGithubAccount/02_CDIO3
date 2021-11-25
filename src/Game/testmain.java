@@ -17,7 +17,7 @@ public class testmain {
         Scanner myScanner = new Scanner(System.in);
 
         int playerAmount = myPop.popup().charAt(0) - 48;
-        while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS > 4) {
+        while (playerAmount < Settings.MIN_PLAYERS || Settings.MAX_PLAYERS < playerAmount) {
             System.out.print("Indtast antal spillere (Min " + Settings.MIN_PLAYERS + ", Maks " + Settings.MAX_PLAYERS + "): ");
             playerAmount = myScanner.nextInt();
         }
