@@ -6,12 +6,12 @@ public class Chance {
         GIVEPLAYERCARD,MOVETOSPACE,MOVECERTAINDISTANCE,CHOISE,CHANGEBALANCE,GETOUTOFJAIL,RECEIVEMONEYFROMPLAYERS
     }
 
-    cardType cType;
-    String name;
-    String text;
-    int id;
-    String value;
-    int move;
+    private cardType cType;
+    private String name;
+    private String text;
+    private int id;
+    private String value;
+    private int move;
 
     // Navn-tekst-id-value-move-Type    Colors/space id: orange=0, green=1, lightblue=2, pink=3, blue=4, red=5, brown=6, yellow=7, start=8, Pier=9, Skatepark=10
 
