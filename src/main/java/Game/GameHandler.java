@@ -7,16 +7,18 @@ import java.util.Scanner;
 
 public class GameHandler {
 
-    String[] printLinesInProgram;
 
 
     public GameHandler() {
-        TXTReader myTXTReader = new TXTReader("Udskrift.txt");
-        String temp = myTXTReader.readTXTFile();
-        printLinesInProgram = temp.split("\n");
+
     }
 
     public void startGame() throws InterruptedException {
+        String[] printLinesInProgram;
+        TXTReader myTXTReader = new TXTReader("Udskrift.txt");
+        String temp = myTXTReader.readTXTFile();
+        printLinesInProgram = temp.split("\n");
+
 
 
         Rafflecup r1 = new Rafflecup(1, 6);
@@ -33,7 +35,7 @@ public class GameHandler {
             PopupBox myPop = new PopupBox(printLinesInProgram[0], printLinesInProgram[1]);
             playerAmount = myPop.popup().charAt(0) - 48;
         }
-        Player[] players = generateplayers(playerAmount);
+        Player[] players = generateplayers(playerAmount,printLinesInProgram);
         System.out.println("før gui");
         // Generates the play board.
         Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
@@ -49,7 +51,7 @@ public class GameHandler {
         do {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
                 Player player = players[i];
-                turn(player, r1, myBoard);
+                turn(player, r1, myBoard,printLinesInProgram);
                 myGui.updateGUI();
                 myScanner2.nextLine();
             }
@@ -60,7 +62,7 @@ public class GameHandler {
 
     }
 
-    public Player[] generateplayers(int amount) {
+    public Player[] generateplayers(int amount, String[] printLinesInProgram) {
 
 
         Player[] players = new Player[amount];
@@ -74,7 +76,7 @@ public class GameHandler {
     }
 
 
-    public void turn(Player player, Rafflecup r1, Board myboard) {
+    public void turn(Player player, Rafflecup r1, Board myboard,String[] printLinesInProgram) {
         System.out.println(printLinesInProgram[5]);
         System.out.println(player.getName());
 
@@ -109,7 +111,7 @@ public class GameHandler {
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (field.getfType()) {
             case PROPERTY:
-                landonfield(player, field);
+                landonfield(player, field,printLinesInProgram);
                 break;
             case FREEPARKING:
             case JAIL:
@@ -130,7 +132,7 @@ public class GameHandler {
                 break;
         }
     }
-    public void landonfield(Player player, Field field){
+    public void landonfield(Player player, Field field,String[] printLinesInProgram){
         if (field.getOwner() == null) {
             player.getAc().newBalance(-field.getPrice());
             if (player.getSoldSigns() > 0) {
