@@ -17,9 +17,4 @@ Spiller:
  ejer denne grund du skylder ham derfor:
 Du er røget i fængsel
 Du har vundet tilykke
-Du rykker direkte til Start.
-Du rykker 5 felter frem.
-Du har spist for meget slik. Giv 2kr til banken.
-Du har lavet dine lektier og får 2kr.
-Du har ramt chancen og skal flytte til Skatepark.
-Du har ramt chancen og skal flytte til Pear
+
