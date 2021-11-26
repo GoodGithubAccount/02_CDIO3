@@ -109,27 +109,7 @@ public class GameHandler {
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (field.getfType()) {
             case PROPERTY:
-                if (field.getOwner() == null) {
-                    player.getAc().newBalance(-field.getPrice());
-                    if (player.getSoldSigns() > 0) {
-                        field.setOwner(player);
-                        System.out.println(printLinesInProgram[12]);
-                    } else
-                        System.out.println(printLinesInProgram[13]);
-                } else {
-                    if (field.getOwner().equals(player)) {
-                        System.out.println(printLinesInProgram[14]);
-                    } else {
-                        System.out.println(printLinesInProgram[15]);
-                        System.out.println(field.getOwner().getName());
-                        System.out.println(printLinesInProgram[16]);
-                        System.out.println(field.getPrice());
-                        player.getAc().newBalance(-field.getPrice());
-                        field.getOwner().getAc().newBalance(field.getPrice());
-
-                    }
-
-                }
+                landonfield(player, field);
                 break;
             case FREEPARKING:
             case JAIL:
@@ -149,5 +129,29 @@ public class GameHandler {
 
                 break;
         }
+    }
+    public void landonfield(Player player, Field field){
+        if (field.getOwner() == null) {
+            player.getAc().newBalance(-field.getPrice());
+            if (player.getSoldSigns() > 0) {
+                field.setOwner(player);
+                System.out.println(printLinesInProgram[12]);
+            } else
+                System.out.println(printLinesInProgram[13]);
+        } else {
+            if (field.getOwner().equals(player)) {
+                System.out.println(printLinesInProgram[14]);
+            } else {
+                System.out.println(printLinesInProgram[15]);
+                System.out.println(field.getOwner().getName());
+                System.out.println(printLinesInProgram[16]);
+                System.out.println(field.getPrice());
+                player.getAc().newBalance(-field.getPrice());
+                field.getOwner().getAc().newBalance(field.getPrice());
+
+            }
+
+        }
+
     }
 }
