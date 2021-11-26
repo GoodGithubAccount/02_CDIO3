@@ -19,7 +19,7 @@ public class Chancekort {
         return ChancekortTypes.values()[x];
     }
 
-    public void chancekorthandling(ChancekortTypes chancekort, Board board, Player player) {
+    public void chancekorthandling(ChancekortTypes chancekort, Board board, Player player, String[] printLinesInProgram) {
         switch (chancekort) {
 
             case MoveToStart:
@@ -51,6 +51,11 @@ public class Chancekort {
             // Skatepark field should originally be free, however it is not implemented.
             case MoveToSkatepark:
                 player.setPosition(Settings.BOARD_SIZE-14);
+                Field skatePark=board.getMyFields()[Settings.BOARD_SIZE-14];
+                if (skatePark.getOwner()==null){
+                    player.getAc().newBalance(skatePark.getPrice());
+                }
+                GameHandler.landonfield(player,skatePark,printLinesInProgram );
                 System.out.println("Du har ramt chancen og skal flytte til Skatepark. ");
 
                 break;
@@ -59,6 +64,8 @@ public class Chancekort {
                 player.setPosition(Settings.BOARD_SIZE-1);
                 System.out.println("Du har ramt chancen og skal flytte til Pear. ");
                 break;
+
+
         }
     }
 }

@@ -127,12 +127,12 @@ public class GameHandler {
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 Chancekort chancekorttest = new Chancekort();
                 Chancekort.ChancekortTypes tilfældigtChancekort = chancekorttest.DrawRandomChanceCard();
-                chancekorttest.chancekorthandling(tilfældigtChancekort, myboard, player);
+                chancekorttest.chancekorthandling(tilfældigtChancekort, myboard, player,printLinesInProgram);
 
                 break;
         }
     }
-    public void landonfield(Player player, Field field,String[] printLinesInProgram){
+    public static void landonfield(Player player, Field field,String[] printLinesInProgram){
         if (field.getOwner() == null) {
             player.getAc().newBalance(-field.getPrice());
             if (player.getSoldSigns() > 0) {
