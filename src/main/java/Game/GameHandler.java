@@ -3,6 +3,7 @@ package Game;
 import GUI.GUIMain;
 import GUI.PopupBox;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class GameHandler {
@@ -13,16 +14,26 @@ public class GameHandler {
     }
 
     public void startGame() throws InterruptedException {
-        String[] printLinesInProgram;
-        TXTReader myTXTReader = new TXTReader("Udskrift.txt");
-        String temp = myTXTReader.readTXTFile();
-        printLinesInProgram = temp.split("\n");
+
+        String[] printLinesInProgram= new String[10];
+
+        try {
+             printLinesInProgram = TXTReader.udskrift("Udskrift.txt");
+        }
+        catch (Exception e){
+
+        }
 
 
         Rafflecup r1 = new Rafflecup(1, 6);
         r1.rollar();
-
+        System.out.flush();
         System.out.println("Linje 8");
+
+        for (int i = 0; i < printLinesInProgram.length; i++) {
+            System.out.println(printLinesInProgram[i]);
+        }
+
         System.out.println(printLinesInProgram[9]);
         System.out.println("Linje 9");
         System.out.print(printLinesInProgram[10]);
@@ -75,7 +86,7 @@ public class GameHandler {
 
 
     public void turn(Player player, Rafflecup r1, Board myboard, String[] printLinesInProgram) {
-        System.out.println(printLinesInProgram[5]);
+        System.out.print(printLinesInProgram[5]+":  ");
         System.out.println(player.getName());
 
         //Tjekker om spilleren skal være i fængsel og frikender spilleren.
@@ -85,9 +96,12 @@ public class GameHandler {
             return;
         }
         //Slag
-        System.out.println(printLinesInProgram[7]);
+        System.out.flush();
+        System.out.print(printLinesInProgram[7]+":  ");
         int sum = r1.sum();
-        System.out.println(printLinesInProgram[8]);
+        System.out.flush();
+        System.out.print((printLinesInProgram[8])+":  ");
+        System.out.flush();
         System.out.println(sum);
         int positionBeforRoll = player.getPosition();
 
@@ -95,8 +109,8 @@ public class GameHandler {
 
         int positionAfterRoll = player.getPosition();
 
-        if (positionAfterRoll%(Settings.BOARD_SIZE-1)<positionBeforRoll%(Settings.BOARD_SIZE-1)){
-            System.out.println(printLinesInProgram);
+        if (positionAfterRoll % (Settings.BOARD_SIZE - 1) < positionBeforRoll % (Settings.BOARD_SIZE - 1)) {
+            System.out.println(printLinesInProgram[19]);
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
         }
 
@@ -105,12 +119,8 @@ public class GameHandler {
         Field field = myboard.getMyFields()[player.getPosition()];
 
 
-        System.out.println(printLinesInProgram[9]);
+        System.out.print(printLinesInProgram[9]+":  ");
         System.out.println(field.getName());
-        System.out.println(printLinesInProgram[10]);
-        System.out.println(field.getfType());
-        System.out.println(printLinesInProgram[11]);
-        System.out.println(player.getPosition());
         //Standard miste penge på felts værdi
 
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.

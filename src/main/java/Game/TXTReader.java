@@ -26,6 +26,7 @@ public class TXTReader {
                 line = myReader.read();
             }
 
+
             myReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + txtFile);
@@ -36,6 +37,22 @@ public class TXTReader {
         }
 
         return returnString;
+    }
+
+    public static String[] udskrift(String file) throws IOException {
+        ArrayList<String> arr = new ArrayList();
+        String currentline;
+        int i = 0;
+        BufferedReader myReader = new BufferedReader(new FileReader("src/main/java/Game/" + file));
+        while ((currentline = myReader.readLine()) != null){
+            //returnString[i] = currentline;
+            arr.add(currentline);
+
+        }
+
+        return arr.toArray(new String[arr.size()]);
+
+
     }
 
 
