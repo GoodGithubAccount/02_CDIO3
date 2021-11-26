@@ -8,19 +8,20 @@ System <- Player: startingGame();
 System -> Player: askPlayerAmount();
 Player --> System: playerAmount
 loop no winner
+Player -> System: isLoser();
 loop 2..4
 
 System -> Player : askPlayerName();
 Player --> System: name
 System -> System: createPlayer
+
 end
 loop  2..4
-System -> Player: rollDie();
-Player --> System: dieValue
-System --> Player: movePlayer
+System -> Player: turn();
+Player --> System: void();
 end
+
 end
-System -> Player: askPlayerNewGame();
-Player --> System: playNewGame
+
 end
 @enduml
