@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class GameHandler {
 
 
-
     public GameHandler() {
 
     }
@@ -18,7 +17,6 @@ public class GameHandler {
         TXTReader myTXTReader = new TXTReader("Udskrift.txt");
         String temp = myTXTReader.readTXTFile();
         printLinesInProgram = temp.split("\n");
-
 
 
         Rafflecup r1 = new Rafflecup(1, 6);
@@ -35,7 +33,7 @@ public class GameHandler {
             PopupBox myPop = new PopupBox(printLinesInProgram[0], printLinesInProgram[1]);
             playerAmount = myPop.popup().charAt(0) - 48;
         }
-        Player[] players = generateplayers(playerAmount,printLinesInProgram);
+        Player[] players = generateplayers(playerAmount, printLinesInProgram);
         System.out.println("før gui");
         // Generates the play board.
         Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
@@ -51,7 +49,7 @@ public class GameHandler {
         do {
             for (int i = 0, playersLength = players.length; i < playersLength; i++) {
                 Player player = players[i];
-                turn(player, r1, myBoard,printLinesInProgram);
+                turn(player, r1, myBoard, printLinesInProgram);
                 myGui.updateGUI();
                 myScanner2.nextLine();
             }
@@ -76,7 +74,7 @@ public class GameHandler {
     }
 
 
-    public void turn(Player player, Rafflecup r1, Board myboard,String[] printLinesInProgram) {
+    public void turn(Player player, Rafflecup r1, Board myboard, String[] printLinesInProgram) {
         System.out.println(printLinesInProgram[5]);
         System.out.println(player.getName());
 
@@ -91,11 +89,18 @@ public class GameHandler {
         int sum = r1.sum();
         System.out.println(printLinesInProgram[8]);
         System.out.println(sum);
+        int positionBeforRoll = player.getPosition();
 
-        player.setPosition((player.getPosition() + sum) % 23);
-        //Tjek om spiller går over start
-        if (player.getPosition() > Settings.BOARD_SIZE - 1)
+        player.setPosition((player.getPosition() + sum) % (Settings.BOARD_SIZE - 1));
+
+        int positionAfterRoll = player.getPosition();
+
+        if (positionAfterRoll%(Settings.BOARD_SIZE-1)<positionBeforRoll%(Settings.BOARD_SIZE-1)){
+            System.out.println(printLinesInProgram[19]);
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
+        }
+
+        //Tjek om spiller går over start
 
         Field field = myboard.getMyFields()[player.getPosition()];
 
@@ -111,7 +116,7 @@ public class GameHandler {
         //Tjekker om de specialle cases Jail free parking go jail property ogg chance.
         switch (field.getfType()) {
             case PROPERTY:
-                landonfield(player, field,printLinesInProgram);
+                landonfield(player, field, printLinesInProgram);
                 break;
             case FREEPARKING:
             case JAIL:
@@ -127,12 +132,13 @@ public class GameHandler {
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 Chancekort chancekorttest = new Chancekort();
                 Chancekort.ChancekortTypes tilfældigtChancekort = chancekorttest.DrawRandomChanceCard();
-                chancekorttest.chancekorthandling(tilfældigtChancekort, myboard, player,printLinesInProgram);
+                chancekorttest.chancekorthandling(tilfældigtChancekort, myboard, player, printLinesInProgram);
 
                 break;
         }
     }
-    public static void landonfield(Player player, Field field,String[] printLinesInProgram){
+
+    public static void landonfield(Player player, Field field, String[] printLinesInProgram) {
         if (field.getOwner() == null) {
             player.getAc().newBalance(-field.getPrice());
             if (player.getSoldSigns() > 0) {
