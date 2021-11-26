@@ -3,6 +3,7 @@ package Game;
 import java.util.Random;
 
 public class Chancekort {
+
     public enum ChancekortTypes {
         MoveToStart,
         Move5Forward,
@@ -18,12 +19,12 @@ public class Chancekort {
         return ChancekortTypes.values()[x];
     }
 
-    public void chancekorthandling(ChancekortTypes chancekort, Board board, Player player) {
+    public void chancekorthandling(ChancekortTypes chancekort, Board board, Player player,String[] printLinesInProgram) {
         switch (chancekort) {
 
             case MoveToStart:
                 player.setPosition(Settings.BOARD_SIZE-Settings.BOARD_SIZE);
-                System.out.println("Du rykker direkte til Start. ");
+                System.out.println(printLinesInProgram[20]);
                 break;
 
             case Move5Forward:
@@ -32,31 +33,31 @@ public class Chancekort {
                 } else {
                     player.setPosition(player.getPosition() + 5);
                 }
-                System.out.println("Du rykker 5 felter frem. ");
+                System.out.println(printLinesInProgram[21]);
                 break;
 
             case Give2ToBank:
                 int x = player.getAc().getBalance();
                 player.getAc().setBalance(x - 2);
-                System.out.println("Du har spist for meget slik. Giv 2kr til banken. ");
+                System.out.println(printLinesInProgram[22]);
                 break;
 
             case DoneAlleHomework:
                 int y = player.getAc().getBalance();
                 player.getAc().setBalance(y + 2);
-                System.out.println("Du har lavet dine lektier og får 2kr. ");
+                System.out.println(printLinesInProgram[23]);
 
                 break;
             // Skatepark field should originally be free, however it is not implemented.
             case MoveToSkatepark:
                 player.setPosition(Settings.BOARD_SIZE-14);
-                System.out.println("Du har ramt chancen og skal flytte til Skatepark");
+                System.out.println(printLinesInProgram[24]);
 
                 break;
 
             case MoveToPear:
                 player.setPosition(Settings.BOARD_SIZE-1);
-                System.out.println("Du har ramt chancen og skal flytte til Pear");
+                System.out.println(printLinesInProgram[25]);
                 break;
         }
     }
