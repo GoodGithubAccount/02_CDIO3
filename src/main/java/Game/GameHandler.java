@@ -36,7 +36,7 @@ public class GameHandler {
         Player[] players = generateplayers(playerAmount, printLinesInProgram);
         System.out.println("før gui");
         // Generates the play board.
-        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
+        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.BOARD_SIZE);
         myBoard.generateBoard();
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
         System.out.println("Efter gui");
@@ -96,7 +96,7 @@ public class GameHandler {
         int positionAfterRoll = player.getPosition();
 
         if (positionAfterRoll%(Settings.BOARD_SIZE-1)<positionBeforRoll%(Settings.BOARD_SIZE-1)){
-            System.out.println(printLinesInProgram[19]);
+            System.out.println(printLinesInProgram);
             player.getAc().newBalance(Settings.GO_SPOT_MONEY);
         }
 

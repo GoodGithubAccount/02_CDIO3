@@ -10,7 +10,6 @@ public final class Settings {
 
     // Text Database(s)
     public static final String FIELD_DATABASE = "fieldDatabase.txt";
-    public static final String CHANCE_DATABASE = "chanceDatabase.txt";
 
     // Game.Board
     public static final int BOARD_SIZE = 24;

@@ -26,7 +26,7 @@ public class testmain {
         Player[] players = generateplayers(playerAmount);
 
         // Generates the play board.
-        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.CHANCE_DATABASE, Settings.BOARD_SIZE);
+        Board myBoard = new Board(Settings.FIELD_DATABASE, Settings.BOARD_SIZE);
         myBoard.generateBoard();
 
         GUIMain myGui = new GUIMain(Settings.WINDOW_WIDTH, Settings.WINDOW_HEIGHT, Settings.BOARD_SIZE, myBoard.getMyFields(), players, playerAmount);
