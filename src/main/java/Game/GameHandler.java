@@ -139,6 +139,8 @@ public class GameHandler {
                 System.out.println(printLinesInProgram[17]);
                 player.setPosition(6);
                 player.setIsjailed(true);
+                break;
+
             case CHANCE:
                 //Når chance metoden kommer vil der skrives noget i denne branch af switchen
                 Chancekort chancekorttest = new Chancekort();
